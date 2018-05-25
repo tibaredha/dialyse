@@ -1,0 +1,2872 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://hemodialyse-demo.sante.gov.dz/ajout_patient.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<title>RIRCD</title>
+
+		<meta name="description" content="Common form elements and layouts">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="./RIRCD_files/bootstrap.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/font-awesome.min.css">
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="./RIRCD_files/jquery-ui.custom.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/chosen.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/bootstrap-datepicker3.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/bootstrap-timepicker.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/daterangepicker.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/bootstrap-colorpicker.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/my_css.css">
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="./RIRCD_files/fonts.googleapis.com.css">
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="./RIRCD_files/ace.min.css" class="ace-main-stylesheet" id="main-ace-style">
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+		<link rel="stylesheet" href="./RIRCD_files/ace-skins.min.css">
+		<link rel="stylesheet" href="./RIRCD_files/ace-rtl.min.css">
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+		<script src="./RIRCD_files/ace-extra.min.js.téléchargement"></script><style>@keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}@-moz-keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}@-webkit-keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}@-ms-keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}@-o-keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}.ace-save-state{animation-duration:10ms;-o-animation-duration:10ms;-ms-animation-duration:10ms;-moz-animation-duration:10ms;-webkit-animation-duration:10ms;animation-delay:0s;-o-animation-delay:0s;-ms-animation-delay:0s;-moz-animation-delay:0s;-webkit-animation-delay:0s;animation-name:nodeInserted;-o-animation-name:nodeInserted;-ms-animation-name:nodeInserted;-moz-animation-name:nodeInserted;-webkit-animation-name:nodeInserted}</style>
+<script src="./RIRCD_files/jquery.min.js.téléchargement"></script>
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+		
+<script language="javascript">
+/*******************************************************************************************/
+
+    function initialiser()
+    {
+       document.form1.init.value=true;
+       document.form1.submit();
+        
+    }
+
+     function PopupCentrer(page,largeur,hauteur,options) 
+    {
+      var top=(screen.height-hauteur)/3;
+      var left=(screen.width-largeur)/2;
+      window.open(page,"","top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+
+    }
+    function controll(){
+       document.getElementById('cacheP').value= '1';
+    }
+    
+    function show_req(){
+        //document.getElementById("precise").removeAttribute("required");
+        var x= document.getElementById("autre_affection").checked;
+        if (x== true){
+            document.getElementById("preci").className= "";   
+       //     document.getElementById("preciser").required= true;
+            
+            }else{ 
+                document.getElementById("preci").className= "hidden";   
+          //      document.getElementById("preciser").required= false;
+     }}
+
+    function dt_inscription(){
+        var x= document.getElementById("inscrit").value;
+        if (x== "Oui"){
+            document.getElementById("dt_ins").style.display="";
+      //      document.getElementById("date_inscription").required= true;
+        }else{
+            document.getElementById("dt_ins").style.display="none";       
+            //    document.getElementById("date_inscription").required= false;
+
+        }
+    } 
+    function dt_tr(){
+        var x= document.getElementById("transfert").value;
+        if (x== "Oui"){
+            document.getElementById("dt_tr").style.display="";
+     //       document.getElementById("date_transfert").required= true;
+            document.getElementById("str_dist").style.display="";
+     //       document.getElementById("str_destinatrice").required= true;
+        }else{
+            document.getElementById("dt_tr").style.display="none";
+     //       document.getElementById("date_transfert").required= false;
+            document.getElementById("str_dist").style.display="none";
+    //        document.getElementById("str_destinatrice").required= false;
+        }
+    } 
+    function re_d(){
+        var x= document.getElementById("retour_dialyse").value;
+        if (x== "Oui"){
+            document.getElementById("re_d").style.display="";
+    //        document.getElementById("motif").required= true;
+        }else{
+            document.getElementById("re_d").style.display="none";
+     //       document.getElementById("motif").required= false;
+    }   }
+    function genererCodeP(){
+        var dt_dec= Date('Y');
+        var dt_nais= document.getElementById("date_naissance").value;
+        var cod_wil= document.getElementById("w_naissance").value;
+        var cod_com3= document.getElementById("com_naissance").value;
+        var n_acte= document.getElementById("acte").value;
+        var res1 = dt_nais.substring(8, 10);
+        var res2 = dt_dec.substring(13, 15);
+        var codePati= res1+cod_wil+cod_com3+n_acte+res2;
+        if(dt_dec != '' && dt_nais != '' && cod_wil != '' && cod_com3 != '' && n_acte != ''){
+            document.getElementById("show_codeP").style.display="";
+            document.getElementById("code_patient").value= codePati;           
+    }    }
+</script>
+<style>
+    .up{
+        margin-top: -20px;
+    }
+    * {margin:0; padding:0}
+    .utilisateur{
+        padding-right: 10px;
+        margin-left: -20px;
+        margin-right: -20px;
+        background-color: rgba(73, 160, 73, 0.94);
+        border-color: rgba(73, 160, 73, 0.94);
+    }
+
+</style>			
+	</head>
+
+	<body class="no-skin">   
+        <div id="navbar" class="navbar navbar-default ace-save-state" style="background-color: rgba(73, 160, 73, 0.94);">
+			<div class="navbar-container ace-save-state green" id="navbar-container">
+                <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                <div class="navbar-buttons navbar-header pull-left">
+                    <ul class="nav ace-nav" style="">
+                        <li class="transparent">
+                         <a href="http://hemodialyse-demo.sante.gov.dz/accueil.php" data-toggle="dropdown" class="dropdown-toggle hidden-480 hidden-xs">
+                                <small style="font-size: 16px">
+                                    REGISTRE DES INSUFFISANTS RENAUX
+                                    <div style="margin-top:-20px;">&nbsp;&nbsp;CHRONIQUES DIALYSES </div>
+                                </small>
+                            </a>
+                            <a href="http://hemodialyse-demo.sante.gov.dz/accueil.php" data-toggle="dropdown" class="dropdown-toggle hidden-lg hidden-md hidden-sm">
+                                <small style="font-size: 16px;">
+                                    R I R C D
+                                </small>
+                            </a>
+                        </li>
+                        <li class="transparent pull-center">
+                         <a href="http://hemodialyse-demo.sante.gov.dz/accueil.php" data-toggle="dropdown" class="dropdown-toggle hidden-480 hidden-xs hidden-sm">
+                                <small style="font-size: 16px">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MINISTERE DE LA SANTE, DE LA POPULATION ET DE LA REFORME 
+                                    <div style="margin-top:-20px;"> HOSPITALIERE </div>
+                                </small>
+                            </a>
+                            <a href="http://hemodialyse-demo.sante.gov.dz/accueil.php" data-toggle="dropdown" class="dropdown-toggle hidden-lg hidden-md pull-center">
+                                <small style="font-size: 16px;">
+                                    M S P R H
+                                </small>
+                            </a>
+                        </li>
+                    </ul>
+				</div>
+				<div class="navbar-buttons navbar-header pull-right" role="navigation">
+                    <table><tbody><tr>
+                        <td style="width: 150px">
+                            <a href="http://hemodialyse-demo.sante.gov.dz/ajout_patient.php#" class="dropdown-toggle white" style="">
+								<span>
+									<small style="width: 200px">VALIDATION Formation</small>
+                                    <br>EPH Djelfa (Djelfa)								</span>
+							</a>
+                        </td>
+                        <td>
+					<ul class="nav ace-nav">
+						<li class="light-green dropdown-modal">
+							<div class="utilisateur">
+                                <img class="nav-user-photo" src="./RIRCD_files/avatar2.png" width="50" height="42">
+                                   <i class="ace-icon fa fa-caret-down white"></i>
+                            </div>
+                           
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<li>
+									<a href="http://hemodialyse-demo.sante.gov.dz/ajout_patient.php#">
+										<i class="ace-icon fa fa-home"></i>
+										Accueil
+									</a>
+								</li>
+
+								<li>
+									<a href="http://hemodialyse-demo.sante.gov.dz/profile.php">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
+									</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a href="http://hemodialyse-demo.sante.gov.dz/fermes.php">
+										<i class="ace-icon fa fa-power-off"></i>
+										Deconnexion
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <br>
+				</div>
+                
+                
+			</div><!-- /.navbar-container -->
+		</div>		
+		<div class="main-container ace-save-state" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.loadState('main-container')}catch(e){}
+			</script>
+
+			<div id="sidebar" class="sidebar responsive ace-save-state" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+				<script type="text/javascript">
+					try{ace.settings.loadState('sidebar')}catch(e){}
+				</script>
+
+				 
+<ul class="nav nav-list" style="top: 0px;">
+					<li class="">
+						<a href="http://hemodialyse-demo.sante.gov.dz/accueil.php">
+							<i class="menu-icon glyphicon glyphicon-home blue"></i>
+							<span class="menu-text">Accueil</span></a>
+						<b class="arrow"></b>
+					</li>
+        					<li class="">
+						 <a href="http://hemodialyse-demo.sante.gov.dz/ajout_patient.php">
+							<i class="menu-icon glyphicon glyphicon-user green"></i>
+							<span class="menu-text">Patient	</span>
+						</a>
+                        <b class="arrow"></b>
+				    </li>
+            <!--        
+                    <li class="">
+                        <a href="recherche_patient.php">
+                            <i class="menu-icon glyphicon glyphicon-search blue"></i>
+                            <span class="menu-text">Recherche</span>
+                        </a>
+                        <b class="arrow"></b>
+                   </li>
+					-->		
+							
+							
+							
+							<!-- <li class="">
+								<a href="#" class="dropdown-toggle">
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Grossiste 
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+
+								<b class="arrow"></b>
+
+								<ul class="submenu">
+									<li class="">
+										<a href="top-menu.html">
+											<i class="menu-icon fa fa-plus purple"></i>
+											Ajout
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="">
+										<a href="two-menu-1.html">
+											<i class="menu-icon fa fa-pencil orange"></i>
+											Modification
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="">
+										<a href="two-menu-2.html">
+											<i class="menu-icon fa fa-eye pink"></i>
+											Etat de sortie
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									
+								</ul>
+							</li>-->
+			
+
+				<!--	<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon  glyphicon glyphicon-list-alt"></i>
+							<span class="menu-text"> Garde officine </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li class="">
+								<a href="garde.php">
+									<i class="menu-icon fa fa-plus purple"></i>
+									Ajout
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="etat_garde.php">
+									<i class="menu-icon fa fa-eye pink"></i>
+									Etat de sortie
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>-->
+
+					
+
+					<li class="">
+						<a href="http://hemodialyse-demo.sante.gov.dz/aide.php">
+							<i class="menu-icon glyphicon glyphicon-question-sign purple"></i>
+							<span class="menu-text"> Aide </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+                    <li class="">
+						<a href="http://hemodialyse-demo.sante.gov.dz/arrete.php">
+							<i class="menu-icon fa fa-book red"></i>
+							<span class="menu-text"> Arreté N° 12 </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+					
+
+					
+				</ul>
+				 
+				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+				</div>
+			</div>			
+
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon blue"></i>
+								<a href="http://hemodialyse-demo.sante.gov.dz/accueil.php">Accueil</a>
+							</li>
+							<li class="active">	Patient</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+
+					<div class="page-content">
+						<div class="page-header">
+                            <h1 class="green">
+                                Ajouter un patient
+                                <label style="display: none;" id="show_codeP">
+                                    <label class="hidden-480 hidden-xs hidden-sm" style="margin-left: 500px;"> 
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </label>Code Patient &nbsp;
+                                    <input type="text" name="code_patient" id="code_patient" style="border: none; background-color: transparent; color: red" class="" size="13" readonly="">
+                                </label>
+                            </h1>
+                                    
+						</div><!-- /.page-header -->
+                        <div class="row"> <!-- Modal -->
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<form class="form-horizontal" id="form1" name="form1" method="post" action="http://hemodialyse-demo.sante.gov.dz/ajout_patient.php">
+                             <input type="hidden" name="cacheP" id="cacheP">
+                                 
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat" style="background-color: #f79393">
+                        <h4 class="widget-title white">Informations personnelles du patient</h4>
+                    </div>
+<br>
+    <div class="widget-body">
+	<div class="widget-main">
+        
+    <div class="row">
+	  <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label for="nom_p" class="col-md-4 control-label">Nom</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" name="nom_p" id="nom_p" placeholder="Nom" value="" onkeyup="javascript:this.value=this.value.toUpperCase();" required="">
+          </div>
+        </div>
+      </div>	
+      <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label for="prenom_p" class="col-md-4 control-label">Prénom</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" name="prenom_p" id="prenom_p" placeholder="Prénom" value="" onkeyup="javascript:this.value=this.value.toUpperCase();" required="">
+          </div>
+        </div>
+      </div>
+		<div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label for="sexe" class="col-md-4 control-label">Sexe</label>
+            <div class="col-sm-8">
+			  <select name="sexe" id="sexe" class="form-control" required="">
+				 <option value="0" selected=""></option>
+				 <option value="Masculin">Masculin</option>
+				 <option value="Féminin">Féminin</option>
+			  </select>						
+            </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+            <div style="padding-right: 40px">
+          <label class="col-md-4 control-label" for="date_naissance">Date de naissance</label>
+            </div>
+          <div class="input-group col-md-8">
+              
+			  <input class="form-control date-picker" name="date_naissance" value="" onchange="genererCodeP()" onblur="" id="date_naissance" type="text" data-date-format="dd-mm-yyyy" required="">
+			  <span class="input-group-addon">
+				<i class="fa fa-calendar bigger-110"></i>
+			  </span>
+          </div>
+        </div>
+      </div>
+    </div><!-- // Row --> 
+        
+    
+<div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="acte">N° Acte naissance</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" name="acte" id="acte" placeholder="Acte de naissance" value="" onblur="genererCodeP()" maxlength="5" minlength="00001" pattern=".{0}|.{5}" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" required="">
+          </div>
+        </div>
+      </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <label for="adresse" class="col-md-2 control-label">Adresse</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Adresse" value="" required="">
+          </div>
+        </div>
+      </div>
+    <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="groupage">Groupage</label>
+          <div class="col-md-5">
+            <select name="groupage" class="form-control" id="groupage">
+				<option></option>
+                <option value="A R+"> A &nbsp; R+ </option>
+                <option value="A R-"> A &nbsp; R- </option>
+        	    <option value="B R+"> B &nbsp; R+ </option>
+                <option value="B R-"> B &nbsp; R- </option>
+        	    <option value="AB R+"> AB &nbsp; R+ </option>		
+                <option value="AB R-"> AB &nbsp; R- </option>
+        	    <option value="O R+"> O &nbsp; R+ </option>		
+                <option value="O R-"> O &nbsp; R- </option>
+            </select>
+          </div>
+        </div>
+      </div>
+        </div>
+    <div class="row">
+	  <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label for="w_naissance" class="col-md-4 control-label">Wilaya de naissance</label>
+          <div class="col-md-8">
+            <select name="w_naissance" class="form-control" id="w_naissance" onblur="genererCodeP()" required=""><option value=""></option>			
+            <option value="01">  01 ADRAR</option>
+			
+            <option value="02">  02 CHLEF</option>
+			
+            <option value="03">  03 LAGHOUAT</option>
+			
+            <option value="04">  04 OUM EL BOUAGHI</option>
+			
+            <option value="05">  05 BATNA</option>
+			
+            <option value="06">  06 BEJAIA</option>
+			
+            <option value="07">  07 BISKRA</option>
+			
+            <option value="08">  08 BECHAR</option>
+			
+            <option value="09">  09 BLIDA</option>
+			
+            <option value="10">  10 BOUIRA</option>
+			
+            <option value="11">  11 TAMANRASSET</option>
+			
+            <option value="12">  12 TEBESSA</option>
+			
+            <option value="13">  13 TLEMCEN</option>
+			
+            <option value="14">  14 TIARET</option>
+			
+            <option value="15">  15 TIZI OUZOU</option>
+			
+            <option value="16">  16 ALGER</option>
+			
+            <option value="17">  17 DJELFA</option>
+			
+            <option value="18">  18 JIJEL</option>
+			
+            <option value="19">  19 SETIF</option>
+			
+            <option value="20">  20 SAIDA</option>
+			
+            <option value="21">  21 SKIKDA</option>
+			
+            <option value="22">  22 SIDI BEL ABBES</option>
+			
+            <option value="23">  23 ANNABA</option>
+			
+            <option value="24">  24 GUELMA</option>
+			
+            <option value="25">  25 CONSTANTINE</option>
+			
+            <option value="26">  26 MEDEA</option>
+			
+            <option value="27">  27 MOSTAGANEM</option>
+			
+            <option value="28">  28 M'SILA</option>
+			
+            <option value="29">  29 MASCARA</option>
+			
+            <option value="30">  30 OUARGLA</option>
+			
+            <option value="31">  31 ORAN</option>
+			
+            <option value="32">  32 EL BAYADH</option>
+			
+            <option value="33">  33 ILLIZI</option>
+			
+            <option value="34">  34 BORDJ BOU ARRERIDJ</option>
+			
+            <option value="35">  35 BOUMERDES</option>
+			
+            <option value="36">  36 EL TARF</option>
+			
+            <option value="37">  37 TINDOUF</option>
+			
+            <option value="38">  38 TISSEMSILT</option>
+			
+            <option value="39">  39 EL OUED</option>
+			
+            <option value="40">  40 KHENCHELA</option>
+			
+            <option value="41">  41 SOUK AHRAS</option>
+			
+            <option value="42">  42 TIPAZA</option>
+			
+            <option value="43">  43 MILA</option>
+			
+            <option value="44">  44 AIN DEFLA</option>
+			
+            <option value="45">  45 NAAMA</option>
+			
+            <option value="46">  46 AIN TEMOUCHENT</option>
+			
+            <option value="47">  47 GHARDAIA</option>
+			
+            <option value="48">  48 RELIZANE</option>
+			
+            <option value="99">  99 NATIONAL</option>
+			
+</select>
+          </div>
+        </div>
+      </div>	
+      <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="d_naissance">Daira de naissance</label>
+          <div class="col-md-8">
+            <select name="d_naissance" class="form-control" id="d_naissance" required="">
+				 <option></option>            </select>
+          </div>
+        </div>
+      </div>
+		<div class="col-xs-12 col-lg-3">
+        <div class="form-group">
+          <label class="col-md-5 control-label" for="com_naissance">Commune de naissance</label>
+            <div class="col-sm-7">
+			  <select name="com_naissance" class="form-control" id="com_naissance" onblur="genererCodeP()" required="">
+				  <option></option>			  </select>						
+            </div>
+        </div>
+      </div>
+    </div><!-- // Row --> 
+
+<div class="space-4"></div>
+									
+	<div class="row">
+        
+	  <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label class="control-label col-md-4" for="w_residance">Wilaya de résidence</label>
+          <div class="col-md-8">
+            <select name="w_residance" id="w_residance" class="form-control" required=""><option value=""></option>			
+            <option value="01">  01 ADRAR</option>
+			
+            <option value="02">  02 CHLEF</option>
+			
+            <option value="03">  03 LAGHOUAT</option>
+			
+            <option value="04">  04 OUM EL BOUAGHI</option>
+			
+            <option value="05">  05 BATNA</option>
+			
+            <option value="06">  06 BEJAIA</option>
+			
+            <option value="07">  07 BISKRA</option>
+			
+            <option value="08">  08 BECHAR</option>
+			
+            <option value="09">  09 BLIDA</option>
+			
+            <option value="10">  10 BOUIRA</option>
+			
+            <option value="11">  11 TAMANRASSET</option>
+			
+            <option value="12">  12 TEBESSA</option>
+			
+            <option value="13">  13 TLEMCEN</option>
+			
+            <option value="14">  14 TIARET</option>
+			
+            <option value="15">  15 TIZI OUZOU</option>
+			
+            <option value="16">  16 ALGER</option>
+			
+            <option value="17">  17 DJELFA</option>
+			
+            <option value="18">  18 JIJEL</option>
+			
+            <option value="19">  19 SETIF</option>
+			
+            <option value="20">  20 SAIDA</option>
+			
+            <option value="21">  21 SKIKDA</option>
+			
+            <option value="22">  22 SIDI BEL ABBES</option>
+			
+            <option value="23">  23 ANNABA</option>
+			
+            <option value="24">  24 GUELMA</option>
+			
+            <option value="25">  25 CONSTANTINE</option>
+			
+            <option value="26">  26 MEDEA</option>
+			
+            <option value="27">  27 MOSTAGANEM</option>
+			
+            <option value="28">  28 M'SILA</option>
+			
+            <option value="29">  29 MASCARA</option>
+			
+            <option value="30">  30 OUARGLA</option>
+			
+            <option value="31">  31 ORAN</option>
+			
+            <option value="32">  32 EL BAYADH</option>
+			
+            <option value="33">  33 ILLIZI</option>
+			
+            <option value="34">  34 BORDJ BOU ARRERIDJ</option>
+			
+            <option value="35">  35 BOUMERDES</option>
+			
+            <option value="36">  36 EL TARF</option>
+			
+            <option value="37">  37 TINDOUF</option>
+			
+            <option value="38">  38 TISSEMSILT</option>
+			
+            <option value="39">  39 EL OUED</option>
+			
+            <option value="40">  40 KHENCHELA</option>
+			
+            <option value="41">  41 SOUK AHRAS</option>
+			
+            <option value="42">  42 TIPAZA</option>
+			
+            <option value="43">  43 MILA</option>
+			
+            <option value="44">  44 AIN DEFLA</option>
+			
+            <option value="45">  45 NAAMA</option>
+			
+            <option value="46">  46 AIN TEMOUCHENT</option>
+			
+            <option value="47">  47 GHARDAIA</option>
+			
+            <option value="48">  48 RELIZANE</option>
+			
+            <option value="99">  99 NATIONAL</option>
+			
+</select>
+          </div>
+        </div>
+      </div>	
+      <div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="d_residance">Daira de résidence</label>
+          <div class="col-md-8">
+            <select name="d_residance" id="d_residance" class="form-control" required="">
+                <option></option>            </select>
+          </div>
+        </div>
+      </div>
+	  <div class="col-xs-12 col-lg-4">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="com_residance">Commune de résidence</label>
+          <div class="col-md-5">
+            <select name="com_residance" id="com_residance" class=" form-control" required="">
+				  <option></option>            </select>						
+            </div>
+        </div>
+      </div>
+      
+    </div>
+        
+    <div class="row">
+        
+        
+		<div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label for="NSS" class="col-md-4 control-label"> N.S.S </label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" name="NSS" id="NSS" placeholder="N S S" maxlength="12" minlength="000000000000" pattern=".{0}|.{12}|.{6}|.{8}" oninput="this.value=this.value.replace(/[^0-9]/g,&#39;&#39;);" value="">
+          </div>
+        </div>
+      </div>	
+		
+	<div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="statut">Statut</label>
+          <div class="col-md-8">
+            <select name="statut" id="statut" class="form-control" data-placeholder="Statut">
+				  <option value="0" selected=""></option>
+				  <option value="Actif">Actif</option>
+				  <option value="Retraité">Retraité</option>
+				  <option value="Etudiant">Etudiant</option>
+				  <option value="IAIG" title="Indemnité pour Activité d’Intérêt Général">IAIG</option>
+				  <option value="AFS" title="Allocation Forfaitaire de Solidarité   ">AFS</option>
+				  <option value="Autre">Autre</option>
+            </select>
+          </div>
+        </div>
+      </div>
+	  
+	  	<div class="col-xs-12 col-sm-3">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="rang">Rang</label>
+          <div class="col-md-8">
+            <select name="rang" id="rang" class="form-control" data-placeholder="Rang">
+				  <option value="0" selected=""></option>
+				  <option value="Assuré">Assuré</option>
+				  <option value="Ayant Deroit">Ayant Deroit</option>
+				  <option value="Autre">Autre</option>
+            </select>
+          </div>
+        </div>
+      </div>
+	</div>
+	</div></div>								
+  </div> <!-- End Widget-Box -->                                 
+                                    
+	 <div class="widget-box">
+	   <div class="widget-header widget-header-flat" style="background-color: rgba(95, 181, 95, 0.94)">
+           <h4 class="widget-title white">Informations médicales du patient</h4>
+       </div>               
+      <div class="row">
+										<div class="col-xs-12 col-sm-4">
+											<div class="widget-box">
+												<div class="widget-header">
+													<h4 class="widget-title">Base de diagnostique:</h4>
+
+													<div class="widget-toolbar">
+														<a href="http://hemodialyse-demo.sante.gov.dz/ajout_patient.php#" data-action="collapse">
+															<i class="ace-icon fa fa-chevron-up"></i>
+														</a>
+													</div>
+												</div>
+
+												<div class="widget-body">
+													<div class="widget-main">
+														<div class="widget-box widget-color-blue">
+
+					<div class="widget-body">
+						<div class="widget-main no-padding">
+							
+	<div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="clinique" name="base_diag[]" id="clinique">
+        <label style="width:10px; position:relative; left: 30px; vertical-align:middle;" for="clinique">Clinique</label>
+    </div>
+    <div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="biologique" name="base_diag[]" id="biologique">
+        <label style="width:10px; position:relative; left: 30px; vertical-align:middle;" for="biologique">Biologique</label>
+    </div>
+	<div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="radiologique" name="base_diag[]" id="radiologique">
+        <label style="width:10px; position:relative; left: 30px; vertical-align:middle;" for="radiologique">Radiologique</label>
+    </div>
+						</div>
+					</div>
+				</div> <!-- .widget-box widget-color-blue-->
+
+														
+        <div>
+            <label for="date_diag">Date de diagnostic </label>
+
+            <div class="input-group">
+                <input name="date_diag" id="date_diag" class="form-control date-picker" type="text" data-date-format="dd-mm-yyyy" value="">
+											<span class="input-group-addon">
+												<i class="fa fa-calendar bigger-110"></i>
+											</span>
+            </div>
+        </div>
+<hr>
+                <div>
+                    <label for="affection">Affection Causale</label>
+
+                    <br>
+                    <select name="affection" id="affection" class="form-control" data-placeholder="Choose a State..."><option value=""></option>			
+            <option value="N18.0">  N18.0 *** SU10 *** Insuffisance rénale terminale</option>
+			
+            <option value="N15.1">  N15.1 Abcès rénal et périrénal</option>
+			
+            <option value="Q60.0">  Q60.0 Agénésie rénale, unilatérale</option>
+			
+            <option value="E85.3">  E85.3 Amylose généralisée secondaire</option>
+			
+            <option value="E85.1">  E85.1 Amylose hérédofamiliale neuropathique</option>
+			
+            <option value="E85.0">  E85.0 Amylose hérédofamiliale non neuropathique</option>
+			
+            <option value="E85.2">  E85.2 Amylose hérédofamiliale, sans précision</option>
+			
+            <option value="I70.0">  I70.0 Athérosclérose de l'aorte</option>
+			
+            <option value="I70.1">  I70.1 Athérosclérose de l'artère rénale</option>
+			
+            <option value="N29.1">  N29.1 Autres affections du rein et de l'uretère au cours de maladies infectieuses et parasitaires classées ailleurs</option>
+			
+            <option value="N28.8">  N28.8 Autres affections précisées du rein et de l'uretère</option>
+			
+            <option value="O26.8">  O26.8 Autres affections précisées liées à la grossesse</option>
+			
+            <option value="N17.8">  N17.8 Autres insuffisances rénales aiguës</option>
+			
+            <option value="Q27.2">  Q27.2 Autres malformations congénitales de l'artère rénale</option>
+			
+            <option value="Q87.8">  Q87.8 Autres syndromes congénitaux malformatifs précisés, non classés ailleurs</option>
+			
+            <option value="N20.1">  N20.1 Calcul de l'uretère</option>
+			
+            <option value="N20.0">  N20.0 Calcul du rein</option>
+			
+            <option value="N20.2">  N20.2 Calcul du rein avec calcul de l'uretère</option>
+			
+            <option value="N20.9">  N20.9 Calcul urinaire, sans précision</option>
+			
+            <option value="D07.6">  D07.6 Carcinome in situ d'organes génitaux de l'homme, autres et non précisés</option>
+			
+            <option value="D09.1">  D09.1 Carcinome in situ d'organes urinaires, autres et non précisés</option>
+			
+            <option value="D07.5">  D07.5 Carcinome in situ de la prostate</option>
+			
+            <option value="N33.0">  N33.0 Cystite tuberculeuse (A18.1)</option>
+			
+            <option value="N08.5">  N08.5 Glomérulopathie au cours d'affections disséminées du tissu conjonctif</option>
+			
+            <option value="N08.1">  N08.1 Glomérulopathie au cours de maladies tumorales</option>
+			
+            <option value="N08.3">  N08.3 Glomérulopathie au cours du diabète sucré (E10-E14 avec le quatrième chiffre .2)</option>
+			
+            <option value="M31.3">  M31.3 Granulomatose de Wegener</option>
+			
+            <option value="N28.0">  N28.0 Ischémie et infarctus du rein</option>
+			
+            <option value="Q61.0">  Q61.0 Kyste (congénital unique) du rein</option>
+			
+            <option value="M32.1">  M32.1 Lupus érythémateux disséminé avec atteinte d'organes et d'appareils</option>
+			
+            <option value="N16.1">  N16.1 Maladie rénale tubulo-interstitielle au cours de maladies tumorales</option>
+			
+            <option value="Q64.9">  Q64.9 Malformation congénitale de l'appareil urinaire, sans précision</option>
+			
+            <option value="Q63.9">  Q63.9 Malformation congénitale du rein, sans précision</option>
+			
+            <option value="C90.0">  C90.0 Myélome multiple</option>
+			
+            <option value="N11.9">  N11.9 Néphrite tubulo-interstitielle chronique, sans précision</option>
+			
+            <option value="I12.0">  I12.0 Néphropathie hypertensive, avec insuffisance rénale</option>
+			
+            <option value="N27.1">  N27.1 Petit rein bilatéral</option>
+			
+            <option value="N27.0">  N27.0 Petit rein unilatéral</option>
+			
+            <option value="N27.9">  N27.9 Petit rein, sans précision</option>
+			
+            <option value="N11.0">  N11.0 Pyélonéphrite (non obstructive chronique) associée à un reflux</option>
+			
+            <option value="N11.1">  N11.1 Pyélonéphrite obstructive (chronique)</option>
+			
+            <option value="N13.6">  N13.6 Pyonéphrose</option>
+			
+            <option value="Q61.3">  Q61.3 Rein polykystique, sans précision</option>
+			
+            <option value="D86.8">  D86.8 Sarcoïdose de localisations autres et associées</option>
+			
+            <option value="M34.0">  M34.0 Sclérose systémique progressive</option>
+			
+            <option value="Q27.1">  Q27.1 Sténose congénitale de l'artère rénale</option>
+			
+            <option value="I73.0">  I73.0 Syndrome de Raynaud</option>
+			
+            <option value="K76.7">  K76.7 Syndrome hépato-rénal</option>
+			
+            <option value="I73.1">  I73.1 Thrombo-angéite oblitérante [Buerger]</option>
+			
+            <option value="N31.0">  N31.0 Vessie neurogène non inhibée, non classée ailleurs</option>
+			
+</select>
+                </div>
+                                                        
+            </div><!-- /.widget-main -->
+        </div><!-- /.widget-body -->
+    </div>
+  </div><!-- /.span -->
+										<div class="col-xs-12 col-sm-4">
+											<div class="widget-box">
+												<div class="widget-header">
+													<h4 class="widget-title"></h4>
+
+													<div class="widget-toolbar">
+														<a href="http://hemodialyse-demo.sante.gov.dz/ajout_patient.php#" data-action="collapse">
+															<i class="ace-icon fa fa-chevron-up"></i>
+														</a>
+													</div>
+												</div>
+												<div class="widget-body">
+													<div class="widget-main">
+                                <div>
+                                    <label for="type_dialyse">Type de dialyse</label>
+                                    <br>
+                                    <select name="type_dialyse" id="type_dialyse" class="form-control" required="">
+                  <option value="Hémodialyse">Hémodialyse</option>
+				  <option value="DPA" title="Dialyse Péritonéale Automatisée">DPA
+                  </option>
+				  <option value="DPCA" title="Dialyse Péritonéale Continue Ambulatoire">DPCA
+                  </option>
+                                    </select>
+                                </div>
+                                                        <br>
+                                <div>
+                        <label for="form-field-select-3">Abord vasculaire initial</label>
+                        <select class="form-control" name="abord" id="abord">
+                            <option value="0" selected=""></option>
+				  <option value="Catheter"> Cathéter</option>
+				  <option value="Fistule">Fistule</option>
+                        </select>
+                    </div>  
+                                                        <br>
+                                <div>
+                                    <label for="date_fistule">Date de première fistule </label>
+                                    <div class="input-group">
+                                        <input name="date_fistule" id="date_fistule" class="form-control date-picker" type="text" data-date-format="dd-mm-yyyy" value="01-01-1900">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar bigger-110"></i>
+                                                    </span>
+                                    </div>
+                                </div>
+							
+
+                                    
+                                    <div class="space-14"></div>   
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.col-xs-12 col-sm-4 -->
+          <div class="col-xs-12 col-sm-4">
+                        <div class="widget-box">
+                            <div class="widget-header">
+                                <h4 class="widget-title green">Comorbidité</h4>
+
+                                <span class="widget-toolbar">
+                                    <a href="http://hemodialyse-demo.sante.gov.dz/ajout_patient.php#" data-action="collapse">
+                                        <i class="ace-icon fa fa-chevron-up"></i>
+                                    </a>
+                                </span>
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <div class="widget-box widget-color-green">
+				<div class="widget-body">
+					<div class="widget-main no-padding">
+    <div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="1" name="comorbidit[]" id="diabete">
+        <label style="width:10px; position:relative; left: 30px; vertical-align:middle;" for="diabete">Diabete</label>
+    </div>
+    <div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="2" name="comorbidit[]" id="HTA">
+        <label style="width:10px; position:relative; left: 30px; vertical-align:middle;" for="HTA" title="Hyper Tension Artérielle">HTA</label>
+    </div>
+	<div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="3" name="comorbidit[]" id="cardio">
+        <label style="width:200px; position:relative; left: 30px; vertical-align:middle;" for="cardio">Affection Cardio-vasculaire </label>
+    </div>
+	<div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="4" name="comorbidit[]" id="VBH">
+        <label style="width:100px; position:relative; left: 30px; vertical-align:middle;" for="VBH" title="">VBH</label>
+    </div>
+	<div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="5" name="comorbidit[]" id="VHC">
+        <label style="width:100px; position:relative; left: 30px; vertical-align:middle;" for="VHC">VHC</label>
+    </div>
+	<div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="6" name="comorbidit[]" id="VIH">
+        <label style="width:100px; position:relative; left: 30px; vertical-align:middle;" for="VIH">VIH</label>
+    </div>
+	<div>
+        <input style="width:20px; position:relative; left: 30px; vertical-align:middle;" type="checkbox" value="7" name="comorbidit[]" id="autre_affection" onclick="show_req()">
+        <label style="width:100px; position:relative; left: 30px; vertical-align:middle;" for="autre_affection" onclick="show_req()">Autre affection</label>
+    </div>
+                    
+    <div id="preci" class="hidden">
+        <div>
+            <label for="preciser">A préciser</label>
+            <input type="text" name="preciser" id="preciser" placeholder="A preciser" class="form-control" value="">
+        </div>									
+    </div> 
+
+					</div>
+				</div>
+			</div>
+                                   
+                    
+													</div>
+												</div>
+											</div>
+              <div>
+                                        <label for="rapport" title="Mesurer la dose de dialyse">Rapport KT/V (&lt; 2)</label>
+                                        <input type="text" id="ktv1" value="" style="width: 40px; border: none; background-color: white" readonly="">
+                                        <br>
+                                        <input type="range" min="0.0" max="2.0" step="0.01" name="rapport" id="rapport" placeholder="Rapport KT/ V" class="form-control" onmousemove="document.getElementById(&#39;ktv1&#39;).value= document.getElementById(&#39;rapport&#39;).value;" value="">
+                                    </div>
+										</div><!-- /.span -->
+                </div><!-- /.row -->
+
+									<div class="space-1"></div>       
+         
+    <div class="widget-body">
+      <div class="widget-main">
+     
+<div class="col-sm-14">
+				<div class="widget-box">
+					<div class="widget-body">
+						<div class="widget-main">
+	<div class="row">
+		<div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="nbr_seance" class="col-md-5 control-label"> Nombre de séance/ semaine </label>
+          <div class="col-md-7">
+            <select name="nbr_seance" id="nbr_seance" class="chosen-select form-control" data-placeholder="NBR Seance" style="display: none;">
+				  <option value="2">2 Fois</option>
+				  <option value="3">3 Fois</option>
+				  <option value="4">4 Fois</option>
+				  <option value="5">&gt; 4 Fois</option>
+            </select><div class="chosen-container chosen-container-single" style="width: 188px;" title="" id="nbr_seance_chosen"><a class="chosen-single"><span>2 Fois</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off"></div><ul class="chosen-results"></ul></div></div>
+          </div>
+        </div>
+      </div>	
+		
+	<div class="col-sm-4 col-lg-4">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="date_1s">Date de 1ere séance</label>
+          <div class="input-group col-md-8">
+            <input class="form-control date-picker" name="date_1s" id="date_1s" type="text" data-date-format="dd-mm-yyyy" value="01-01-1900">
+			  <span class="input-group-addon">
+				<i class="fa fa-calendar bigger-110"></i>
+			  </span>
+          </div>
+        </div>
+      </div>
+	  
+	  	<div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="cas">Cas</label>
+          <div class="col-md-8">
+            <select name="cas" id="cas" class="form-control" data-placeholder="Cas" required="">
+                <option value="Prévalent">Prévalent</option>
+                <option value="Incident">Incident</option>
+            <!--    <option value='Décès' >D&eacute;c&egrave;s</option>-->
+            </select>
+          </div>
+        </div>
+      </div>
+	</div> 	<!-- // end Row -->                    
+
+							</div>
+						</div>
+					</div>
+				</div>          
+	       </div> <!-- // end widget-main -->
+        </div> <!-- // end widget-body -->
+	</div> <!-- // end widget-Box -->	  
+
+    <div class="widget-box">
+	   <div class="widget-header widget-header-flat" style="background-color: #f79393">
+           <h4 class="widget-title black" style="color: white">Suivi du patient</h4>
+       </div>
+<br>
+        
+        <div class="row">		
+		<div class="col-sm-6 col-lg-7">
+        <div class="form-group">
+          <label class="col-md-5 control-label" for="etat">Etat</label>
+          <div class="col-md-5">
+            <select name="etat" id="etat" class="chosen-select form-control " data-placeholder="Etat" style="display: none;">
+                  <option value="1">Vivant</option>
+                  <option value="2">En Sevrage</option>
+                  <option value="3">Perdu de Vue</option>
+                  <option value="4">Décédée</option>
+                  <option value="5">Greffé</option>
+            </select><div class="chosen-container chosen-container-single" style="width: 254px;" title="" id="etat_chosen"><a class="chosen-single"><span>Vivant</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off"></div><ul class="chosen-results"></ul></div></div>
+          </div>
+        </div>
+      </div>
+		<div class="col-sm-6 col-lg-5">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="date_etat">Date état  </label>
+          <div class="input-group col-md-6">
+			  <input class="form-control date-picker" name="date_etat" id="date_etat" type="text" data-date-format="dd-mm-yyyy" value="">
+			  <span class="input-group-addon">
+				<i class="fa fa-calendar bigger-110"></i>
+			  </span>
+          </div>
+        </div>
+      </div>  
+	</div>	<!-- end Row -->  
+        <div class="row">
+		<div class="col-sm-6 col-lg-7">
+        <div class="form-group">
+          <label class="col-md-5 control-label" for="inscrit">Inscrit sur la Liste Nationale d'Attente pour une Greffe Rénale</label>
+          <div class="col-md-5">
+            <select name="inscrit" id="inscrit" class="chosen-select form-control" onchange="dt_inscription()" style="display: none;">
+				  <option value="Non">Non</option>
+                  <option value="Oui">Oui</option>
+			 </select><div class="chosen-container chosen-container-single" style="width: 254px;" title="" id="inscrit_chosen"><a class="chosen-single"><span>Non</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off"></div><ul class="chosen-results"></ul></div></div>
+          </div>
+        </div>
+      </div>
+	  <div class="col-sm-6 col-lg-5" id="dt_ins" style="display: none">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="date_inscription">Date d'Inscription </label>
+			<div class="input-group col-md-6">
+			  <input class="form-control date-picker" name="date_inscription" id="date_inscription" type="text" data-date-format="dd-mm-yyyy" value="">
+			  <span class="input-group-addon">
+				<i class="fa fa-calendar bigger-110"></i>
+			  </span>
+          </div>
+        </div>
+      </div>
+	</div>  <!-- end row -->
+    <div class="row">
+	  <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="nbr_seance" class="col-md-6 control-label">Transfert vers une autre Unité de Dialyse </label>
+          <div class="col-md-6">
+            <select name="transfert" id="transfert" class="form-control" onchange="dt_tr()">
+				<option value="Non">Non</option>
+                <option value="Oui">Oui</option>
+			</select>
+          </div>
+        </div>
+      </div>	
+	<div id="dt_tr" class="col-sm-4 col-lg-3" style="display: none">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="date_1s">date de transfert</label>
+          <div class="input-group col-md-8">
+            <input class="form-control date-picker" name="date_transfert" id="date_transfert" type="text" data-date-format="dd-mm-yyyy" value="">
+			  <span class="input-group-addon">
+				<i class="fa fa-calendar bigger-110"></i>
+			  </span>
+          </div>
+        </div>
+     </div>
+	<div id="str_dist" class="col-sm-6 col-lg-4" style="display: none">
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="cas">Structure destinatrice</label>
+          <div class="col-md-9">
+              <select name="str_destinatrice" id="str_destinatrice" class="form-control"><option value=""></option>			
+            <option value="OU-CHU-15620"> CHU Annaba  - Hop  Ibn Roched- (Annaba)</option>
+			
+            <option value="OU-CHU-15621"> CHU Annaba -Clinique De Ophtalmologie- (Annaba)</option>
+			
+            <option value="OU-CHU-15622"> CHU Annaba -Clinique Dentaire Elysa- (Annaba)</option>
+			
+            <option value="OU-CHU-15623"> CHU Annaba -Hop  Dorban- (Annaba)</option>
+			
+            <option value="OU-CHU-15624"> CHU Annaba -Hop  Ibn Sina- (Annaba)</option>
+			
+            <option value="OU-CHU-15625"> CHU Annaba Clinique De Pediatrie (Annaba)</option>
+			
+            <option value="OU-CHU-15626"> CHU Annaba Clinique Dentaire Saouli (Annaba)</option>
+			
+            <option value="OU-CHU-2351"> CHU Bab El Oued</option>
+			
+            <option value="OU-CHU-12396"> CHU Batna (Batna)</option>
+			
+            <option value="OU-CHU-12710"> CHU Bejaia (Bejaia)</option>
+			
+            <option value="OU-CHU-2353"> CHU Beni Messous</option>
+			
+            <option value="OU-CHU-13229"> CHU Blida (Blida)</option>
+			
+            <option value="OU-CHU-15872"> CHU Constantine (Constantine)</option>
+			
+            <option value="OU-CHU-2354"> CHU Hussein Dey (Alger)</option>
+			
+            <option value="OU-CHU-2350"> CHU Mustapha</option>
+			
+            <option value="OU-CHU-16925"> CHU Oran</option>
+			
+            <option value="OU-CHU-16926"> Chu Oran - Unite Dentaire- (Oran)</option>
+			
+            <option value="OU-CHU-16927"> Chu Oran - Unite Ortho Traumatologie- (Oran)</option>
+			
+            <option value="OU-CHU-16928"> Chu Oran - Unite Siege- (Oran)</option>
+			
+            <option value="OU-CHU-16929"> Chu Oran -UNITE Laribere- (Oran)</option>
+			
+            <option value="OU-CHU-2352"> CHU Parnet</option>
+			
+            <option value="OU-CHU-14861"> CHU Setif</option>
+			
+            <option value="OU-CHU-14862"> Chu Setif -UNITE Mere Et Enfant- (Setif)</option>
+			
+            <option value="OU-CHU-14863"> Chu Setif -UNITE Orl Et Ophtalmologie- (Setif)</option>
+			
+            <option value="OU-CHU-15458"> CHU Sidi Bel Abbes (Sidi Bel Abbes)</option>
+			
+            <option value="OU-CHU-14242"> CHU Tizi Ouzou</option>
+			
+            <option value="OU-CHU-14243"> Chu Tizi Ouzou -UNITE Nedir- (Tizi ouzou)</option>
+			
+            <option value="OU-CHU-13768"> CHU Tlemcen (Tlemcen)</option>
+			
+            <option value="OU-PHEMO-1603"> Clinique Bonne Santé</option>
+			
+            <option value="OU-PHEMO-4205"> Clinique Hemodialyse EL AMEL</option>
+			
+            <option value="OU-PHEMO-4204"> Clinique Hemodialyse EL MANEL</option>
+			
+            <option value="OU-PHEMO-4202"> Clinique Hemodialyse El Safaa</option>
+			
+            <option value="OU-PHEMO-4201"> Clinique Hemodialyse El Zahra</option>
+			
+            <option value="OU-PHEMO-4203"> Clinique Hemodialyse NEPHRODIAL</option>
+			
+            <option value="OU-PHEMO-4206"> Clinique Hemodialyse SIDI BOUMAAZA</option>
+			
+            <option value="OU-PHEMO-1604"> Clinique Kouba Hémodialyse</option>
+			
+            <option value="OU-PHEMO-1602"> Clinique Les Grands Vents</option>
+			
+            <option value="OU-PHEMO-0502"> Clinique LOUCHENE</option>
+			
+            <option value="OU-PHEMO-0503"> Clinique MAGHREB</option>
+			
+            <option value="OU-PHEMO-0504"> Clinique RENADIALE</option>
+			
+            <option value="OU-PHEMO-0501"> Clinique SAFIMEDIAL</option>
+			
+            <option value="OU-PHEMO-1605"> Clinique SELOUANE</option>
+			
+            <option value="OU-EH-15082"> EH Ain Azel (Ain Azal)</option>
+			
+            <option value="OU-EH-18718"> EH Ain Toumechent (Ain Timouchent)</option>
+			
+            <option value="OU-EH-17020"> EH Ain Turck Dr Madjbeur Tami (Ain Turk)</option>
+			
+            <option value="OU-EH-60157"> EH Didouche Mourad (Constantine)</option>
+			
+            <option value="OU-EH-55044"> EH Ophtalmo Ouargla</option>
+			
+            <option value="OU-EH-63282"> EH Skikda</option>
+			
+            <option value="OU-EHS-16930"> EHS  Mere et  Enfant Les Amandiers Tazi Fatima (Oran)</option>
+			
+            <option value="OU-EHS-13230"> EHS Anti Canceraux Blida (Blida)</option>
+			
+            <option value="OU-EHS-2373"> EHS Anti Cancereux (Cpmc)</option>
+			
+            <option value="OU-EHS-2391"> EHS Appareil Locom.Chir.Reparatoire Douera</option>
+			
+            <option value="OU-EHS-2382"> EHS Appareil Locomoteur De Ben Aknoun Alger</option>
+			
+            <option value="OU-EHS-2372"> EHS BrulÃ©s Alger</option>
+			
+            <option value="OU-EHS-2376"> EHS Chirurgie Cardiaque Abderrahmani Mohamed (Castors)</option>
+			
+            <option value="OU-EHS-15873"> EHS Chirurgie Cardiaque Erriadh (Constantine)</option>
+			
+            <option value="OU-EHS-16931"> EHS D'Ophtalmologie Oran (Oran)</option>
+			
+            <option value="OU-EHS-15874"> EHS D'Urologie,Nephrologie et De Transplantation Renale (Daksi) (Constantine)</option>
+			
+            <option value="OU-EHS-12786"> EHS De Reeducation Readaptation  Fonctionnelle  Fenaia Ilmaten (Ifelain Ilmathen)</option>
+			
+            <option value="OU-EHS-14843"> EHS De Reeducation Readaptation Fonct.Tixana (Texena)</option>
+			
+            <option value="OU-EHS-16932"> EHS En Oncologie Emir Abdelkader Oran (Oran)</option>
+			
+            <option value="OU-EHS-2374"> EHS Maladies Infectieuses Dr El Hadi Flici</option>
+			
+            <option value="OU-EHS-55046"> EHS MÃ¨re et  Enfant Djelfa</option>
+			
+            <option value="OU-EHS-55051"> EHS MÃ©re &amp; Enfants Boumali Mohamed Ain</option>
+			
+            <option value="OU-EHS-55048"> EHS MÃ©re &amp; Enfants Hadj.Abed Atika</option>
+			
+            <option value="OU-EHS-55049"> EHS MÃ©re &amp; Enfants Tipaza</option>
+			
+            <option value="OU-EHS-55047"> EHS Mère &amp; Enfants Dr.Saadane</option>
+			
+            <option value="OU-EHS-18719"> EHS Mere et  Enfant Ain Temouchent (Ain Timouchent)</option>
+			
+            <option value="OU-EHS-14079"> EHS Mere et  Enfant Aourai Zohra (Tiaret)</option>
+			
+            <option value="OU-EHS-17226"> EHS Mere et  Enfant Belhocine Rachid (Bordj Bou Arreridj)</option>
+			
+            <option value="OU-EHS-17800"> EHS Mere et  Enfant Benaceur Bachir (El Oued)</option>
+			
+            <option value="OU-EHS-12948"> EHS Mere et  Enfant El Alia (Biskra)</option>
+			
+            <option value="OU-EHS-14970"> EHS Mere et  Enfant El Eulma (El Eulma)</option>
+			
+            <option value="OU-EHS-15627"> EHS Mere et  Enfant El-Bouni Annaba (Annaba)</option>
+			
+            <option value="OU-EHS-18842"> EHS Mere et  Enfant Gueddi Bakir (Ghardaia)</option>
+			
+            <option value="OU-EHS-15172"> EHS Mere et  Enfant Hamdane Bakhta Saida (Saida)</option>
+			
+            <option value="OU-EHS-13610"> EHS Mere et  Enfant Khaldi Abdelaziz (Tebessa)</option>
+			
+            <option value="OU-EHS-16182"> EHS Mere et  Enfant Lala Kheira (Mostaganem)</option>
+			
+            <option value="OU-EHS-16933"> EHS Mere et  Enfant Les Pins (Oran)</option>
+			
+            <option value="OU-EHS-12397"> EHS Mere et  Enfant Meriam Bouatoura (Batna)</option>
+			
+            <option value="OU-EHS-13119"> EHS Mere et  Enfant Mohamed Boudiaf (Bechar)</option>
+			
+            <option value="OU-EHS-16934"> EHS Mere et  Enfant Nouar Fadela (Oran)</option>
+			
+            <option value="OU-EHS-16935"> EHS Mere et  Enfant Point Du Jour (Oran)</option>
+			
+            <option value="OU-EHS-17962"> EHS Mere et  Enfant Salhi Belkacem (Khenchela)</option>
+			
+            <option value="OU-EHS-14244"> EHS Mere et  Enfant Sbihi Tassadit (Tizi Ouzou)</option>
+			
+            <option value="OU-EHS-15459"> EHS Mere et  Enfant Sidi Bel Abbes (Sidi Bel Abbes)</option>
+			
+            <option value="OU-EHS-13769"> EHS Mere et  Enfant Tlemcen (Tlemcen)</option>
+			
+            <option value="OU-EHS-16872"> EHS Mere et  Enfant Touggourt (Touggourt)</option>
+			
+            <option value="OU-EHS-16361"> EHS Mere et Enfant Slimane Amirat (M'Sila)</option>
+			
+            <option value="OU-EHS-2375"> EHS Neuro Chirurgical Ali Ait Idir</option>
+			
+            <option value="OU-EHS-14080"> EHS Ophtalmologie Bouabdelli Bouabdellah (Tiaret)</option>
+			
+            <option value="OU-EHS-12949"> EHS Ophtalmologie El Boukhari (Biskra)</option>
+			
+            <option value="OU-EHS-16936"> EHS Pediatrique Canastel Oran (Oran)</option>
+			
+            <option value="OU-EHS-15875"> EHS Pediatrique Sidi Mabrouk (Constantine)</option>
+			
+            <option value="OU-EHS-15876"> EHS Psychiaitrique Djebl Ouahch (Constantine)</option>
+			
+            <option value="OU-EHS-2380"> EHS Psychiatrie Drid Hocine (Kouba)</option>
+			
+            <option value="OU-EHS-12442"> EHS Psychiatrique El Madher (El Madher)</option>
+			
+            <option value="OU-EHS-15628"> EHS Psychiatrique El Razi Annaba (Annaba)</option>
+			
+            <option value="OU-EHS-14245"> EHS Psychiatrique Fernane Hanafi Oued Aissi (Tizi Ouzou)</option>
+			
+            <option value="OU-EHS-13231"> EHS Psychiatrique Frantz Fanon (Blida)</option>
+			
+            <option value="OU-EHS-2390"> EHS Psychiatrique Mahfoud Boucebci Cheraga</option>
+			
+            <option value="OU-EHS-16183"> EHS Psychiatrique Mostaganem (Mostaganem)</option>
+			
+            <option value="OU-EHS-18341"> EHS Psychiatrique Oued Athmania Mila (Oued Athmania)</option>
+			
+            <option value="OU-EHS-15460"> EHS Psychiatrique Sidi Bel Abbes (Sidi Bel Abbes)</option>
+			
+            <option value="OU-EHS-17040"> EHS Psychiatrique Sidi Chami Oran (Sidi Chami)</option>
+			
+            <option value="OU-EHS-14081"> EHS Psychiatrique Tiaret (Tiaret)</option>
+			
+            <option value="OU-EHS-19050"> EHS Psychiatrique Yellel (Yellel)</option>
+			
+            <option value="OU-EHS-15344"> EHS Pyschaitrique El Harrouch Skikda (El Harrouch)</option>
+			
+            <option value="OU-EHS-14940"> EHS Pyshiatrique Ain Abassa (Ain Abessa)</option>
+			
+            <option value="OU-EHS-2388"> EHS RÃ©education RÃ©ada. Fonct Yahgoubi Zoheir Azur Plage</option>
+			
+            <option value="OU-EHS-2377"> EHS RÃ©education Readapta. Fonct Kasdi Merbah Tixeraine</option>
+			
+            <option value="OU-EHS-16611"> EHS Reedu. Reada. Fonct. Bouhnifia Mascara (Bou Hanifia)</option>
+			
+            <option value="OU-EHS-15682"> EHS Reeducation Readap. Fonct Seraidi  Annaba (Seraidi)</option>
+			
+            <option value="OU-EHS-14864"> EHS Reeducation Readaptation Fonct Ras El Ma (Setif)</option>
+			
+            <option value="OU-EHS-2378"> EHS Urgences Medico- Chirurgicales Salim Zmirli</option>
+			
+            <option value="OU-EHU-55045"> Ehu Oran</option>
+			
+            <option value="OU-EPH-11952"> EPH  Chlef (Chorfa) (Chlef)</option>
+			
+            <option value="OU-EPH-55245"> EPH Abadla</option>
+			
+            <option value="OU-EPH-12977"> EPH Achour Ziane (Ouled Djellal)</option>
+			
+            <option value="OU-EPH-11765"> EPH Adrar (Adrar)</option>
+			
+            <option value="OU-EPH-12221"> EPH Aflou (Aflou)</option>
+			
+            <option value="OU-EPH-15694"> EPH Ahmed Gouasmi Chetaibi (Chetaibi)</option>
+			
+            <option value="OU-EPH-12263"> EPH Ain Beida (Zerdani Salah) (Ain Beida)</option>
+			
+            <option value="OU-EPH-15686"> EPH Ain Berda (Ain Berda)</option>
+			
+            <option value="OU-EPH-13483"> EPH Ain Bessam (Ain Bessam)</option>
+			
+            <option value="OU-EPH-15994"> EPH Ain Boucif Aissa Kirouan (Ain Boucif)</option>
+			
+            <option value="OU-EPH-18498"> EPH Ain Defla (Ain Defla)</option>
+			
+            <option value="OU-EPH-14260"> EPH Ain El Hammam (Ain El Hammam)</option>
+			
+            <option value="OU-EPH-14882"> EPH Ain El Kebira (Ain El Kebira)</option>
+			
+            <option value="OU-EPH-16567"> EPH Ain El Melh (Ain El Melh)</option>
+			
+            <option value="OU-EPH-12373"> EPH Ain Fakroun (Ain Fakroun)</option>
+			
+            <option value="OU-EPH-15813"> EPH Ain Larbi (Ain Larbi)</option>
+			
+            <option value="OU-EPH-12272"> EPH Ain M'Lila (Ain M'Lila)</option>
+			
+            <option value="OU-EPH-15019"> EPH Ain Oulmane (Ain Oulmene)</option>
+			
+            <option value="OU-EPH-14702"> EPH Ain Oussera (Ain Oussera)</option>
+			
+            <option value="OU-EPH-13587"> EPH Ain Salah (In Salah)</option>
+			
+            <option value="OU-EPH-18670"> EPH Ain Sefra (Ain Sefra)</option>
+			
+            <option value="OU-EPH-2386"> EPH Ain Taya</option>
+			
+            <option value="OU-EPH-16233"> EPH Ain Tedles (Ain Tadles)</option>
+			
+            <option value="OU-EPH-18720"> EPH Ain Temouchent (Ain Timouchent)</option>
+			
+            <option value="OU-EPH-12633"> EPH Ain Touta (Ain Touta)</option>
+			
+            <option value="OU-EPH-17021"> EPH Ain Turk (Akid Othmane) (Ain Turk)</option>
+			
+            <option value="OU-EPH-12822"> EPH Akbou (Akbou)</option>
+			
+            <option value="OU-EPH-12725"> EPH Amizour (Amizour)</option>
+			
+            <option value="OU-EPH-12807"> EPH Aokas (Aokas)</option>
+			
+            <option value="OU-EPH-12484"> EPH Arris 1 (Arris)</option>
+			
+            <option value="OU-EPH-12485"> EPH Arris 2 (Arris)</option>
+			
+            <option value="OU-EPH-17003"> EPH Arzew ( El Mohgoun) (Arzew)</option>
+			
+            <option value="OU-EPH-14439"> EPH Azeffoun (Azeffoun)</option>
+			
+            <option value="OU-EPH-15274"> EPH Azzaba (Azzaba)</option>
+			
+            <option value="OU-EPH-14339"> EPH Azzazga (Azazga)</option>
+			
+            <option value="OU-EPH-13167"> EPH Bachir Belkacem (Mechraa Houari Boumediene)</option>
+			
+            <option value="OU-EPH-12608"> EPH Barika (Mohamed Boudiaf) (Barika)</option>
+			
+            <option value="OU-EPH-12609"> EPH Barika (Slimane Amirat) (Barika)</option>
+			
+            <option value="OU-EPH-12398"> EPH Batna (Batna)</option>
+			
+            <option value="OU-EPH-13120"> EPH Bechar (Ancien Hop) (Bechar)</option>
+			
+            <option value="OU-EPH-15598"> EPH Ben Badis (Ben Badis)</option>
+			
+            <option value="OU-EPH-14986"> EPH Beni Ourtilene (Beni Ourtilane)</option>
+			
+            <option value="OU-EPH-18807"> EPH Beni Saf (Beni Saf)</option>
+			
+            <option value="OU-EPH-16116"> EPH Beni Slimane ( Col Seid Amar ) (Beni Slimane)</option>
+			
+            <option value="OU-EPH-16123"> EPH Berrouaghia (Ben Youcef Benkheda) (Berrouaghia)</option>
+			
+            <option value="OU-EPH-13630"> EPH Bir El Ater (Bir El Ater)</option>
+			
+            <option value="OU-EPH-12950"> EPH Biskra (Bachir Ben Nacer) (Biskra)</option>
+			
+            <option value="OU-EPH-12951"> EPH Biskra (Dr Saadane) (Biskra)</option>
+			
+            <option value="OU-EPH-13232"> EPH Blida (Blida)</option>
+			
+            <option value="OU-EPH-14463"> EPH Boghni (Boghni)</option>
+			
+            <option value="OU-EPH-2384"> EPH Bologhine</option>
+			
+            <option value="OU-EPH-17689"> EPH Bordj Bou NaÃ¤ma (Bordj Bounaama)</option>
+			
+            <option value="OU-EPH-17227"> EPH Bordj Bouarreridj (Bordj Bou Arreridj)</option>
+			
+            <option value="OU-EPH-17428"> EPH Bordj Menaiel (Bordj Menaiel)</option>
+			
+            <option value="OU-EPH-15822"> EPH Bouchegouf (Bouchegouf)</option>
+			
+            <option value="OU-EPH-13312"> EPH Boufarik (Boufarik)</option>
+			
+            <option value="OU-EPH-15099"> EPH Bougaa (Bougaa)</option>
+			
+            <option value="OU-EPH-17146"> EPH Bougtob (Bougtoub)</option>
+			
+            <option value="OU-EPH-17551"> EPH Bouhadjar (Bouhadjar)</option>
+			
+            <option value="OU-EPH-12364"> EPH Bouhafs Mohamed (Meskiana)</option>
+			
+            <option value="OU-EPH-13355"> EPH Bouira (Bouira)</option>
+			
+            <option value="OU-EPH-16480"> EPH Bousaada (Bou Saada)</option>
+			
+            <option value="OU-EPH-17572"> EPH Bouzid Ammar (El Kala)</option>
+			
+            <option value="OU-EPH-18017"> EPH Chechar (Cherchar)</option>
+			
+            <option value="OU-EPH-18328"> EPH Chelghoum Laid (Chelghoum El Laid)</option>
+			
+            <option value="OU-EPH-13643"> EPH Cheria (Cheria)</option>
+			
+            <option value="OU-EPH-12100"> EPH Chettia (Chettia)</option>
+			
+            <option value="OU-EPH-11953"> EPH Chlef (Ouled Mohamed) (Chlef)</option>
+			
+            <option value="OU-EPH-15306"> EPH Collo (Collo)</option>
+			
+            <option value="OU-EPH-15877"> EPH Constantine (El Bir) (Constantine)</option>
+			
+            <option value="OU-EPH-17497"> EPH Dellys (Dellys)</option>
+			
+            <option value="OU-EPH-17942"> EPH DjamaÃ¤ (Djammaa)</option>
+			
+            <option value="OU-EPH-17199"> EPH Djanet (Djanet)</option>
+			
+            <option value="OU-EPH-14591"> EPH Djelfa (Djelfa)</option>
+			
+            <option value="OU-EPH-14298"> EPH Draa El Mizan (Draa El Mizan)</option>
+			
+            <option value="OU-EPH-13265"> EPH El Affroun (El Affroun)</option>
+			
+            <option value="OU-EPH-13657"> EPH El Aouinet (El Aouinet)</option>
+			
+            <option value="OU-EPH-18550"> EPH El Attaf (El Attaf)</option>
+			
+            <option value="OU-EPH-17094"> EPH El Bayadh (El Bayadh)</option>
+			
+            <option value="OU-EPH-2357"> EPH El Biar</option>
+			
+            <option value="OU-EPH-17135"> EPH El Biodh Sidi Cheikh (El Abiodh Sidi Cheikh)</option>
+			
+            <option value="OU-EPH-14971"> EPH El Eulma (El Eulma)</option>
+			
+            <option value="OU-EPH-15647"> EPH El Hadjar (El Hadjar)</option>
+			
+            <option value="OU-EPH-2379"> EPH El Harrach</option>
+			
+            <option value="OU-EPH-15345"> EPH El Harrouch (El Harrouch)</option>
+			
+            <option value="OU-EPH-15930"> EPH El Khroub (Ali Mendjeli) (El Khroub)</option>
+			
+            <option value="OU-EPH-15931"> EPH El Khroub (Mohamed Boudiaf) (El Khroub)</option>
+			
+            <option value="OU-EPH-17934"> EPH El Meghaier (El M'Ghair)</option>
+			
+            <option value="OU-EPH-14773"> EPH El Milia (El Milia)</option>
+			
+            <option value="OU-EPH-2385"> EPH El Mouradia</option>
+			
+            <option value="OU-EPH-17801"> EPH El Oued (El Oued)</option>
+			
+            <option value="OU-EPH-17544"> EPH El Tarf (El Taref)</option>
+			
+            <option value="OU-EPH-15726"> EPH Emir Abdelkader (Oued Zenati)</option>
+			
+            <option value="OU-EPH-18318"> EPH Ferdjioua (Ferdjioua)</option>
+			
+            <option value="OU-EPH-14181"> EPH Frenda (Frenda)</option>
+			
+            <option value="OU-EPH-18911"> EPH Ghardaia (Bounoura)</option>
+			
+            <option value="OU-EPH-13820"> EPH Ghazaouet (Ghazaouet)</option>
+			
+            <option value="OU-EPH-16658"> EPH GhriSS (Ghriss)</option>
+			
+            <option value="OU-EPH-18223"> EPH Gouraya (Gouraya)</option>
+			
+            <option value="OU-EPH-15711"> EPH Guelma (Hakim Okbi) (Guelma)</option>
+			
+            <option value="OU-EPH-15712"> EPH Guelma (Ibn Zohr) (Guelma)</option>
+			
+            <option value="OU-EPH-18892"> EPH Guerrara (El Guerrara)</option>
+			
+            <option value="OU-EPH-18213"> EPH Hadjout (Hadjout)</option>
+			
+            <option value="OU-EPH-18738"> EPH Hammam Bouhadjhar (Hammam Bouhadjar)</option>
+			
+            <option value="OU-EPH-14610"> EPH Hassi Bahbah (Hassi Bahbah)</option>
+			
+            <option value="OU-EPH-16838"> EPH Hassi Messouad (Hassi Messaoud)</option>
+			
+            <option value="OU-EPH-17181"> EPH Illizi (Illizi)</option>
+			
+            <option value="OU-EPH-14729"> EPH Jijel (Jijel)</option>
+			
+            <option value="OU-EPH-17977"> EPH Kais (Kais)</option>
+			
+            <option value="OU-EPH-18522"> EPH Khemis Miliana (Khemis Meliana)</option>
+			
+            <option value="OU-EPH-17963"> EPH Khenchela (Ali Boushaba) (Khenchela)</option>
+			
+            <option value="OU-EPH-17964"> EPH Khenchela (Nouvel HÃ¶pital (Khenchela)</option>
+			
+            <option value="OU-EPH-12899"> EPH Kherrata (Kherrata)</option>
+			
+            <option value="OU-EPH-18285"> EPH Kolea (Kolea)</option>
+			
+            <option value="OU-EPH-2381"> EPH Kouba</option>
+			
+            <option value="OU-EPH-14193"> EPH Ksar Chellala (Ksar Chellala)</option>
+			
+            <option value="OU-EPH-16081"> EPH Ksar El Boukhari (Ksar El Boukhari)</option>
+			
+            <option value="OU-EPH-12152"> EPH Laghouat (Laghouat)</option>
+			
+            <option value="OU-EPH-13407"> EPH Lakharia (Lakhdaria)</option>
+			
+            <option value="OU-EPH-14361"> EPH Larbaa Nath Irathen (Larba Nait Irathen)</option>
+			
+            <option value="OU-EPH-13491"> EPH M'Chedallah (M'Chedallah)</option>
+			
+            <option value="OU-EPH-16362"> EPH M'Sila (M'Sila)</option>
+			
+            <option value="OU-EPH-13925"> EPH Maghnia (Maghnia)</option>
+			
+            <option value="OU-EPH-14143"> EPH Mahdia (Mahdia)</option>
+			
+            <option value="OU-EPH-16593"> EPH Mascara (Issad Khaled) (Mascara)</option>
+			
+            <option value="OU-EPH-16594"> EPH Mascara (Meslem Tayeb) (Mascara)</option>
+			
+            <option value="OU-EPH-19033"> EPH Mazouna (Mazouna)</option>
+			
+            <option value="OU-EPH-18656"> EPH Mecheria (Mecheria)</option>
+			
+            <option value="OU-EPH-15975"> EPH Medea (Medea)</option>
+			
+            <option value="OU-EPH-17314"> EPH Medjana (Medjana)</option>
+			
+            <option value="OU-EPH-13301"> EPH Meftah (Meftah)</option>
+			
+            <option value="OU-EPH-18859"> EPH Menea (El Meniaa)</option>
+			
+            <option value="OU-EPH-12423"> EPH Merouana (Ali Nemeur) (Merouana)</option>
+			
+            <option value="OU-EPH-12424"> EPH Merouana (Ziza Massika) (Merouana)</option>
+			
+            <option value="OU-EPH-14650"> EPH Messaad (Messaad)</option>
+			
+            <option value="OU-EPH-18877"> EPH Metlili (Metlili)</option>
+			
+            <option value="OU-EPH-18304"> EPH Mila (Ancien HÃ¶pital Des Freres Tobbal) (Mila)</option>
+			
+            <option value="OU-EPH-18305"> EPH Mila (Freres Maghlaoui) (Mila)</option>
+			
+            <option value="OU-EPH-18507"> EPH Miliana (Miliana)</option>
+			
+            <option value="OU-EPH-13159"> EPH Mohamed Yakoub Beni Abbes (Beni Abbes)</option>
+			
+            <option value="OU-EPH-16735"> EPH Mohammadia (Mohammadia)</option>
+			
+            <option value="OU-EPH-13697"> EPH Morsot (Morsott)</option>
+			
+            <option value="OU-EPH-16184"> EPH Mostaganem (Mostaganem)</option>
+			
+            <option value="OU-EPH-12450"> EPH N'Gaous (N'Gaous)</option>
+			
+            <option value="OU-EPH-18649"> EPH Naama (Naama)</option>
+			
+            <option value="OU-EPH-14009"> EPH Nedroma (Nedroma)</option>
+			
+            <option value="OU-EPH-16806"> EPH Ouargla (Ouargla)</option>
+			
+            <option value="OU-EPH-18329"> EPH Oued Athmania (Chelghoum El Laid)</option>
+			
+            <option value="OU-EPH-18941"> EPH Oued Rhiou (Oued Rhiou)</option>
+			
+            <option value="OU-EPH-13722"> EPH Ouenza (Ouenza)</option>
+			
+            <option value="OU-EPH-12249"> EPH Oum El Bouaghi (Mohamed Boudiaf) (Oum El Bouaghi)</option>
+			
+            <option value="OU-EPH-12250"> EPH Oum El Bouaghi Ibn Sina (Ancien Hop) (Oum El Bouaghi)</option>
+			
+            <option value="OU-EPH-17243"> EPH Ras El Oued (Ras El Oued)</option>
+			
+            <option value="OU-EPH-11791"> EPH Reggane (Reggane)</option>
+			
+            <option value="OU-EPH-18928"> EPH Relizane (Relizane)</option>
+			
+            <option value="OU-EPH-2387"> EPH Rouiba</option>
+			
+            <option value="OU-EPH-15173"> EPH Saida (Saida)</option>
+			
+            <option value="OU-EPH-13979"> EPH Sebdou (Sebdou)</option>
+			
+            <option value="OU-EPH-18096"> EPH Sedrata (Sedrata)</option>
+			
+            <option value="OU-EPH-15552"> EPH Sfisef (Sfissef)</option>
+			
+            <option value="OU-EPH-12878"> EPH Sidi Aich (Sidi Aich)</option>
+			
+            <option value="OU-EPH-16455"> EPH Sidi Aissa (Sidi Aissa)</option>
+			
+            <option value="OU-EPH-16259"> EPH Sidi Ali (Sidi Ali)</option>
+			
+            <option value="OU-EPH-55050"> EPH Sidi Bel Abbes</option>
+			
+            <option value="OU-EPH-18275"> EPH Sidi Ghiles (Sidi Ghiles)</option>
+			
+            <option value="OU-EPH-16707"> EPH Sig (Sig)</option>
+			
+            <option value="OU-EPH-15257"> EPH Skikda (Skikda)</option>
+			
+            <option value="OU-EPH-12014"> EPH Sobha (Sobha)</option>
+			
+            <option value="OU-EPH-14148"> EPH Sougueur (Sougueur)</option>
+			
+            <option value="OU-EPH-18085"> EPH Souk Ahras (Ancien HÃ¶pital) (Souk Ahras)</option>
+			
+            <option value="OU-EPH-18086"> EPH Souk Ahras (Ibn Rochd) (Souk Ahras)</option>
+			
+            <option value="OU-EPH-13498"> EPH Sour El Ghozlane (Sour El Ghozlane)</option>
+			
+            <option value="OU-EPH-16142"> EPH Tablat Brahim Hamiane et  Freres (Tablat)</option>
+			
+            <option value="OU-EPH-14748"> EPH Taher (Taher)</option>
+			
+            <option value="OU-EPH-16889"> EPH Taibet (Taibet)</option>
+			
+            <option value="OU-EPH-15392"> EPH Tamalous (Tamalous)</option>
+			
+            <option value="OU-EPH-13526"> EPH Tamanrasset (Tamanghasset)</option>
+			
+            <option value="OU-EPH-13718"> EPH Tebessa  Bouguerra Boulares (Bekkaria) (Bekkaria)</option>
+			
+            <option value="OU-EPH-13611"> EPH Tebessa (Alia Slah) (Tebessa)</option>
+			
+            <option value="OU-EPH-15487"> EPH Telagh (Telagh)</option>
+			
+            <option value="OU-EPH-11973"> EPH Tenes (Zighoud Youcef) (Tenes)</option>
+			
+            <option value="OU-EPH-17475"> EPH Thenia (Thenia)</option>
+			
+            <option value="OU-EPH-17701"> EPH Theniet El Had (Theniet El Had)</option>
+			
+            <option value="OU-EPH-14082"> EPH Tiaret (Tiaret)</option>
+			
+            <option value="OU-EPH-16645"> EPH Tighenif (Zelmata)</option>
+			
+            <option value="OU-EPH-14449"> EPH Tigzirt (Tigzirt)</option>
+			
+            <option value="OU-EPH-11825"> EPH Timimoun (Timimoun)</option>
+			
+            <option value="OU-EPH-17658"> EPH Tindouf (Tindouf)</option>
+			
+            <option value="OU-EPH-17674"> EPH Tissemsilt (Tissemsilt)</option>
+			
+            <option value="OU-EPH-16873"> EPH Touggourt (Touggourt)</option>
+			
+            <option value="OU-EPH-13121"> EPH Tourabi Boudjemaa (Nouvel Hop) (Bechar)</option>
+			
+            <option value="OU-EPH-2389"> EPH Zeralda</option>
+			
+            <option value="OU-EPH-15913"> EPH Zighoud Youcef (Zighoud Youcef)</option>
+			
+            <option value="OU-EPH-13077"> EPH Ziouchi Mohamed Tolga (Tolga)</option>
+			
+            <option value="OU-EPSP-13202"> EPSP Abadla (Abadla)</option>
+			
+            <option value="OU-EPSP-13553"> EPSP Abalessa (Silet) (Abalessa)</option>
+			
+            <option value="OU-EPSP-16287"> EPSP Achaacha (Achaacha)</option>
+			
+            <option value="OU-EPSP-12818"> EPSP Adekar (Adekar)</option>
+			
+            <option value="OU-EPSP-11766"> EPSP Adrar (Adrar)</option>
+			
+            <option value="OU-EPSP-12222"> EPSP Aflou (Aflou)</option>
+			
+            <option value="OU-EPSP-13382"> EPSP Ahnif (Hanif)</option>
+			
+            <option value="OU-EPSP-14941"> EPSP Ain Abessa (Ain Abessa)</option>
+			
+            <option value="OU-EPSP-15947"> EPSP Ain Abid (Ain Abid)</option>
+			
+            <option value="OU-EPSP-15083"> EPSP Ain Azel (Ain Azal)</option>
+			
+            <option value="OU-EPSP-12264"> EPSP Ain Beida (Ain Beida)</option>
+			
+            <option value="OU-EPSP-18482"> EPSP Ain Beida Heriche (Ain Beida Harriche)</option>
+			
+            <option value="OU-EPSP-13484"> EPSP Ain Bessam (Ain Bessam)</option>
+			
+            <option value="OU-EPSP-14114"> EPSP Ain Deheb (Ain Deheb)</option>
+			
+            <option value="OU-EPSP-12499"> EPSP Ain Djasser (Ain Djasser)</option>
+			
+            <option value="OU-EPSP-15547"> EPSP Ain El Berd (Ain El Berd)</option>
+			
+            <option value="OU-EPSP-14157"> EPSP Ain El Hadid (Ain El Hadid)</option>
+			
+            <option value="OU-EPSP-14883"> EPSP Ain El Kebira (Ain El Kebira)</option>
+			
+            <option value="OU-EPSP-16568"> EPSP Ain El Melh (Ain El Melh)</option>
+			
+            <option value="OU-EPSP-17022"> EPSP Ain El Turk (Ain Turk)</option>
+			
+            <option value="OU-EPSP-15400"> EPSP Ain Kechra (Ain Kechra)</option>
+			
+            <option value="OU-EPSP-14190"> EPSP Ain Kermes (Ain Kermes)</option>
+			
+            <option value="OU-EPSP-18568"> EPSP Ain Lechiekh (Ain Lechiakh)</option>
+			
+            <option value="OU-EPSP-12273"> EPSP Ain M'Lila (Ain M'Lila)</option>
+			
+            <option value="OU-EPSP-12183"> EPSP Ain Madhi (Ain Madhi)</option>
+			
+            <option value="OU-EPSP-15020"> EPSP Ain Oulmene (Ain Oulmene)</option>
+			
+            <option value="OU-EPSP-14703"> EPSP Ain Oussera (Ain Oussera)</option>
+			
+            <option value="OU-EPSP-18671"> EPSP Ain Sefra (Ain Sefra)</option>
+			
+            <option value="OU-EPSP-16234"> EPSP Ain Tedles (Ain Tadles)</option>
+			
+            <option value="OU-EPSP-18721"> EPSP Ain Temouchent (Ain Timouchent)</option>
+			
+            <option value="OU-EPSP-12634"> EPSP Ain Touta (Ain Touta)</option>
+			
+            <option value="OU-EPSP-15629"> EPSP Annaba (Annaba)</option>
+			
+            <option value="OU-EPSP-12808"> EPSP Aokas (Aokas)</option>
+			
+            <option value="OU-EPSP-16696"> EPSP Aouf (Aouf)</option>
+			
+            <option value="OU-EPSP-11850"> EPSP Aoulef (Aoulef)</option>
+			
+            <option value="OU-EPSP-12486"> EPSP Arris (Arris)</option>
+			
+            <option value="OU-EPSP-17004"> EPSP Arzew (Arzew)</option>
+			
+            <option value="OU-EPSP-14440"> EPSP Azeffoun (Azeffoun)</option>
+			
+            <option value="OU-EPSP-14340"> EPSP Azzazga (Azazga)</option>
+			
+            <option value="OU-EPSP-13882"> EPSP Bab El Assa (Bab El Assa)</option>
+			
+            <option value="OU-EPSP-2341"> EPSP Bab El Oued</option>
+			
+            <option value="OU-EPSP-11942"> EPSP Badji Mokhtar (Bordj Badji Mokhtar)</option>
+			
+            <option value="OU-EPSP-2343"> EPSP Baraki</option>
+			
+            <option value="OU-EPSP-12610"> EPSP Barika (Barika)</option>
+			
+            <option value="OU-EPSP-12399"> EPSP Batna (Batna)</option>
+			
+            <option value="OU-EPSP-13122"> EPSP Bechar (Bechar)</option>
+			
+            <option value="OU-EPSP-12711"> EPSP Bejaia (Bejaia)</option>
+			
+            <option value="OU-EPSP-15296"> EPSP Ben Azzouz (Benazouz)</option>
+			
+            <option value="OU-EPSP-13160"> EPSP Beni Abbes (Beni Abbes)</option>
+			
+            <option value="OU-EPSP-12009"> EPSP Beni Haoua (Beni Haoua)</option>
+			
+            <option value="OU-EPSP-13221"> EPSP Beni Ounif (Beni Ounif)</option>
+			
+            <option value="OU-EPSP-14987"> EPSP Beni Ourtilene (Beni Ourtilane)</option>
+			
+            <option value="OU-EPSP-18808"> EPSP Beni Saf (Beni Saf)</option>
+			
+            <option value="OU-EPSP-16117"> EPSP Beni Slimane (Beni Slimane)</option>
+			
+            <option value="OU-EPSP-16506"> EPSP Bensour (Ben Srour)</option>
+			
+            <option value="OU-EPSP-18870"> EPSP Beriane (Berriane)</option>
+			
+            <option value="OU-EPSP-15641"> EPSP Berrahal (Berrahel)</option>
+			
+            <option value="OU-EPSP-16124"> EPSP Berrouaghia (Berrouaghia)</option>
+			
+            <option value="OU-EPSP-13631"> EPSP Bir El Ater (Bir El Ater)</option>
+			
+            <option value="OU-EPSP-17392"> EPSP Bir Kasdali (Bir  Kasdali)</option>
+			
+            <option value="OU-EPSP-12952"> EPSP Biskra (Biskra)</option>
+			
+            <option value="OU-EPSP-2345"> EPSP Bodj El Kiffan</option>
+			
+            <option value="OU-EPSP-14464"> EPSP Boghni (Boghni)</option>
+			
+            <option value="OU-EPSP-17690"> EPSP Bordj Bou Naama (Bordj Bounaama)</option>
+			
+            <option value="OU-EPSP-17228"> EPSP Bordj Bouarreridj (Bordj Bou Arreridj)</option>
+			
+            <option value="OU-EPSP-17429"> EPSP Bordj Menaiel (Bordj Menaiel)</option>
+			
+            <option value="OU-EPSP-18263"> EPSP Bou Ismail (Bou Ismail)</option>
+			
+            <option value="OU-EPSP-15823"> EPSP Bouchegouf (Bouchegouf)</option>
+			
+            <option value="OU-EPSP-15100"> EPSP Bougaa (Bougaa)</option>
+			
+            <option value="OU-EPSP-17552"> EPSP Bouhadjar (Bouhadjar)</option>
+			
+            <option value="OU-EPSP-13248"> EPSP Bouinan (Bouinan)</option>
+			
+            <option value="OU-EPSP-13356"> EPSP Bouira (Bouira)</option>
+			
+            <option value="OU-EPSP-12039"> EPSP Boukadir (Boukadir)</option>
+			
+            <option value="OU-EPSP-18516"> EPSP Boumedfaa (Boumedfaa)</option>
+			
+            <option value="OU-EPSP-17410"> EPSP Boumerdes (Boumerdes)</option>
+			
+            <option value="OU-EPSP-16481"> EPSP Boussaada (Bou Saada)</option>
+			
+            <option value="OU-EPSP-14825"> EPSP Boussif Ouled Askeur (Boussif Ouled Asker)</option>
+			
+            <option value="OU-EPSP-17079"> EPSP Boutlilis (Boutlelis)</option>
+			
+            <option value="OU-EPSP-2342"> EPSP Bouzareah</option>
+			
+            <option value="OU-EPSP-17118"> EPSP Brezina (Brezina)</option>
+			
+            <option value="OU-EPSP-12196"> EPSP Brida (Brida)</option>
+			
+            <option value="OU-EPSP-16095"> EPSP Chahbounia (Chahbounia)</option>
+			
+            <option value="OU-EPSP-18018"> EPSP Chechar (Cherchar)</option>
+			
+            <option value="OU-EPSP-18330"> EPSP Chelghoum Laid (Chelghoum El Laid)</option>
+			
+            <option value="OU-EPSP-17160"> EPSP Chellala (Chellala)</option>
+			
+            <option value="OU-EPSP-16034"> EPSP Chellalet El Adaoura (Chellalet El Adhaoura)</option>
+			
+            <option value="OU-EPSP-2348"> EPSP Cheraga</option>
+			
+            <option value="OU-EPSP-18239"> EPSP Cherchell (Cherchel)</option>
+			
+            <option value="OU-EPSP-13644"> EPSP Cheria (Cheria)</option>
+			
+            <option value="OU-EPSP-15878"> EPSP Constantine (Bachir Mentouri) (Constantine)</option>
+			
+            <option value="OU-EPSP-15879"> EPSP Constantine (Larbi Ben M'Hidi) (Constantine)</option>
+			
+            <option value="OU-EPSP-18247"> EPSP Damous (Damous)</option>
+			
+            <option value="OU-EPSP-17209"> EPSP Debdeb (Deb Deb)</option>
+			
+            <option value="OU-EPSP-17868"> EPSP Debila (Debila)</option>
+			
+            <option value="OU-EPSP-17498"> EPSP Dellys (Dellys)</option>
+			
+            <option value="OU-EPSP-17200"> EPSP Djanet (Djanet)</option>
+			
+            <option value="OU-EPSP-14592"> EPSP Djelfa (Djelfa)</option>
+			
+            <option value="OU-EPSP-18534"> EPSP Djelida (Djelida)</option>
+			
+            <option value="OU-EPSP-18031"> EPSP Djellal (Djellal)</option>
+			
+            <option value="OU-EPSP-17943"> EPSP Djemaa (Djammaa)</option>
+			
+            <option value="OU-EPSP-13071"> EPSP Djemorah (Djemorah)</option>
+			
+            <option value="OU-EPSP-19000"> EPSP Djidiouia (Djidiouia)</option>
+			
+            <option value="OU-EPSP-14820"> EPSP Djimla (Djimla)</option>
+			
+            <option value="OU-EPSP-13008"> EPSP Doucen (Doucen)</option>
+			
+            <option value="OU-EPSP-14493"> EPSP Draa Ben Khedda (Draa Ben Khadda)</option>
+			
+            <option value="OU-EPSP-17610"> EPSP Drean (Drean)</option>
+			
+            <option value="OU-EPSP-18556"> EPSP El Abadia (El Abadia)</option>
+			
+            <option value="OU-EPSP-18792"> EPSP El Amria (El Amria)</option>
+			
+            <option value="OU-EPSP-13658"> EPSP El Aouinet (El Aouinet)</option>
+			
+            <option value="OU-EPSP-17095"> EPSP El Bayadh (El Bayadh)</option>
+			
+            <option value="OU-EPSP-16922"> EPSP El Borma (El Borma)</option>
+			
+            <option value="OU-EPSP-17366"> EPSP El Colla (Colla)</option>
+			
+            <option value="OU-EPSP-14972"> EPSP El Eulma (El Eulma)</option>
+			
+            <option value="OU-EPSP-15648"> EPSP El Hadjar (El Hadjar)</option>
+			
+            <option value="OU-EPSP-16878"> EPSP El Hadjira (El Hadjira)</option>
+			
+            <option value="OU-EPSP-15221"> EPSP El Hassasna (El Hassasna)</option>
+			
+            <option value="OU-EPSP-17573"> EPSP El Kala (El Kala)</option>
+			
+            <option value="OU-EPSP-13059"> EPSP El Kantara (El Kantara)</option>
+			
+            <option value="OU-EPSP-15932"> EPSP El Khroub (El Khroub)</option>
+			
+            <option value="OU-EPSP-12883"> EPSP El Kseur (El Kseur)</option>
+			
+            <option value="OU-EPSP-18062"> EPSP El Mahmel (El Mahmal)</option>
+			
+            <option value="OU-EPSP-17935"> EPSP El Meghaier (El M'Ghair)</option>
+			
+            <option value="OU-EPSP-18860"> EPSP El Menea (El Meniaa)</option>
+			
+            <option value="OU-EPSP-17802"> EPSP El Oued (El Oued)</option>
+			
+            <option value="OU-EPSP-17545"> EPSP El Tarf (El Taref)</option>
+			
+            <option value="OU-EPSP-12443"> EPSP El-Madher (El Madher)</option>
+			
+            <option value="OU-EPSP-16995"> EPSP Es Senia (Es Senia)</option>
+			
+            <option value="OU-EPSP-18319"> EPSP Ferdjioua (Ferdjioua)</option>
+			
+            <option value="OU-EPSP-18843"> EPSP Ghardaia (Theniet El Makhzen) (Ghardaia)</option>
+			
+            <option value="OU-EPSP-13821"> EPSP Ghazaouet (Ghazaouet)</option>
+			
+            <option value="OU-EPSP-15713"> EPSP Guelma (Guelma)</option>
+			
+            <option value="OU-EPSP-12188"> EPSP Gueltet Sidi Saad (Gueltat Sidi Saad)</option>
+			
+            <option value="OU-EPSP-17841"> EPSP Guemar (Guemar)</option>
+			
+            <option value="OU-EPSP-18893"> EPSP Guerrara (El Guerrara)</option>
+			
+            <option value="OU-EPSP-14659"> EPSP Guettara (Guettara)</option>
+			
+            <option value="OU-EPSP-15901"> EPSP Hamma Bouziane (Hamma Bouziane)</option>
+			
+            <option value="OU-EPSP-18739"> EPSP Hammam Bouhadjar (Hammam Bouhadjar)</option>
+			
+            <option value="OU-EPSP-15045"> EPSP Hammam Sokhna (Hammam Essokhna)</option>
+			
+            <option value="OU-EPSP-14611"> EPSP Hassi Bahbah (Hassi Bahbah)</option>
+			
+            <option value="OU-EPSP-12176"> EPSP Hassi Delaa (Hassi Delaa)</option>
+			
+            <option value="OU-EPSP-16839"> EPSP Hassi Messaoud (Hassi Messaoud)</option>
+			
+            <option value="OU-EPSP-14330"> EPSP Iferhounene (Iferhounene)</option>
+			
+            <option value="OU-EPSP-17182"> EPSP Illizi (Illizi)</option>
+			
+            <option value="OU-EPSP-17221"> EPSP In Amenas (In Amenas)</option>
+			
+            <option value="OU-EPSP-13569"> EPSP In Guezzam (In Guezzam)</option>
+			
+            <option value="OU-EPSP-13602"> EPSP In M'Guel (In Amguel)</option>
+			
+            <option value="OU-EPSP-13588"> EPSP In Salah (In Salah)</option>
+			
+            <option value="OU-EPSP-14730"> EPSP Jijel (Jijel)</option>
+			
+            <option value="OU-EPSP-17978"> EPSP Kais (Kais)</option>
+			
+            <option value="OU-EPSP-13208"> EPSP Kerzaz (Kerzaz)</option>
+			
+            <option value="OU-EPSP-17150"> EPSP Kheiter (El Kheither)</option>
+			
+            <option value="OU-EPSP-17533"> EPSP Khemis El Khechna (Khemis El Khechna)</option>
+			
+            <option value="OU-EPSP-17965"> EPSP Khenchela (Khenchela)</option>
+			
+            <option value="OU-EPSP-12900"> EPSP Kherrata (Kherrata)</option>
+			
+            <option value="OU-EPSP-14194"> EPSP Ksar Chellala (Ksar Chellala)</option>
+			
+            <option value="OU-EPSP-16082"> EPSP Ksar El Boukhari (Ksar El Boukhari)</option>
+			
+            <option value="OU-EPSP-12165"> EPSP Ksar El Hirane (Ksar El Hirane)</option>
+			
+            <option value="OU-EPSP-12153"> EPSP Laghouat (Laghouat)</option>
+			
+            <option value="OU-EPSP-13408"> EPSP Lakhdaria (Lakhdaria)</option>
+			
+            <option value="OU-EPSP-15569"> EPSP Lamtar (Lamtar)</option>
+			
+            <option value="OU-EPSP-13320"> EPSP Larbaa (Larbaa)</option>
+			
+            <option value="OU-EPSP-14362"> EPSP Larbaa Nath Irathen (Larba Nait Irathen)</option>
+			
+            <option value="OU-EPSP-18150"> EPSP M'Daourouch (M'Daourouche)</option>
+			
+            <option value="OU-EPSP-16363"> EPSP M'Sila (M'Sila)</option>
+			
+            <option value="OU-EPSP-13926"> EPSP Maghnia (Maghnia)</option>
+			
+            <option value="OU-EPSP-16426"> EPSP Magra (Magra)</option>
+			
+            <option value="OU-EPSP-14144"> EPSP Mahdia (Mahdia)</option>
+			
+            <option value="OU-EPSP-17258"> EPSP Mansourah (Mansoura)</option>
+			
+            <option value="OU-EPSP-15504"> EPSP Marhoum (Marhoum)</option>
+			
+            <option value="OU-EPSP-16595"> EPSP Mascara (Mascara)</option>
+			
+            <option value="OU-EPSP-18657"> EPSP Mecheria (Mecheria)</option>
+			
+            <option value="OU-EPSP-17315"> EPSP Medjana (Medjana)</option>
+			
+            <option value="OU-EPSP-18711"> EPSP Mekmen Benamer (Makman Ben Amer)</option>
+			
+            <option value="OU-EPSP-12425"> EPSP Merouana (Merouana)</option>
+			
+            <option value="OU-EPSP-16316"> EPSP Mesra (Mesra)</option>
+			
+            <option value="OU-EPSP-14651"> EPSP Messaad (Messaad)</option>
+			
+            <option value="OU-EPSP-18878"> EPSP Metlili (Metlili)</option>
+			
+            <option value="OU-EPSP-18306"> EPSP Mila (Mila)</option>
+			
+            <option value="OU-EPSP-16736"> EPSP Mohammadia (Mohammadia)</option>
+			
+            <option value="OU-EPSP-16185"> EPSP Mostaganem (Mostaganem)</option>
+			
+            <option value="OU-EPSP-15200"> EPSP Moulay Larbi (Moulay Larbi)</option>
+			
+            <option value="OU-EPSP-13293"> EPSP Mouzaia (Mouzaia)</option>
+			
+            <option value="OU-EPSP-12451"> EPSP N'Gaous (N'Gaous)</option>
+			
+            <option value="OU-EPSP-18650"> EPSP Naama (Naama)</option>
+			
+            <option value="OU-EPSP-13677"> EPSP Negrine (Negrine)</option>
+			
+            <option value="OU-EPSP-16937"> EPSP Oran (Front De Mer) (Oran)</option>
+			
+            <option value="OU-EPSP-16938"> EPSP Oran (Hai Bouamama) (Oran)</option>
+			
+            <option value="OU-EPSP-16939"> EPSP Oran (Hai Leghoualem) (Oran)</option>
+			
+            <option value="OU-EPSP-16940"> EPSP Oran (Seddikia) (Oran)</option>
+			
+            <option value="OU-EPSP-14499"> EPSP Ouacif (Ouacif)</option>
+			
+            <option value="OU-EPSP-14378"> EPSP Ouaguenoun (Ouaguenoun)</option>
+			
+            <option value="OU-EPSP-16807"> EPSP Ouargla (Ouargla)</option>
+			
+            <option value="OU-EPSP-16651"> EPSP Oued El Abtal (Oued El Abtal)</option>
+			
+            <option value="OU-EPSP-12122"> EPSP Oued Fodda (Oued Fodda)</option>
+			
+            <option value="OU-EPSP-17032"> EPSP Oued Tlilat (Oued Tlelat)</option>
+			
+            <option value="OU-EPSP-15727"> EPSP Oued Znati (Oued Zenati)</option>
+			
+            <option value="OU-EPSP-13723"> EPSP Ouenza (Ouenza)</option>
+			
+            <option value="OU-EPSP-13259"> EPSP Ouled Aich (Ouled Yaich)</option>
+			
+            <option value="OU-EPSP-15330"> EPSP Ouled Attia (Ouled Attia)</option>
+			
+            <option value="OU-EPSP-12978"> EPSP Ouled Djellal (Ouled Djellal)</option>
+			
+            <option value="OU-EPSP-12024"> EPSP Ouled Fares (Ouled Fares)</option>
+			
+            <option value="OU-EPSP-13854"> EPSP Ouled Mimoun (Ouled Mimoun)</option>
+			
+            <option value="OU-EPSP-12251"> EPSP Oum El Bouaghi (Oum El Bouaghi)</option>
+			
+            <option value="OU-EPSP-17670"> EPSP Oum Lassel (Oum El Assel)</option>
+			
+            <option value="OU-EPSP-14137"> EPSP Rahouia (Rahouia)</option>
+			
+            <option value="OU-EPSP-12674"> EPSP Ras El Aioun (Ras El Aioun)</option>
+			
+            <option value="OU-EPSP-12987"> EPSP Ras El Miaad (Ras El Miaad)</option>
+			
+            <option value="OU-EPSP-17244"> EPSP Ras El Oued (Ras El Oued)</option>
+			
+            <option value="OU-EPSP-11792"> EPSP Reggane (Reggane)</option>
+			
+            <option value="OU-EPSP-18929"> EPSP Relizane (Relizane)</option>
+			
+            <option value="OU-EPSP-13796"> EPSP Remchi (Remchi)</option>
+			
+            <option value="OU-EPSP-15174"> EPSP Saida (Saida)</option>
+			
+            <option value="OU-EPSP-13980"> EPSP Sebdou (Sebdou)</option>
+			
+            <option value="OU-EPSP-12829"> EPSP Sedouk (Seddouk)</option>
+			
+            <option value="OU-EPSP-18097"> EPSP Sedrata (Sedrata)</option>
+			
+            <option value="OU-EPSP-14865"> EPSP Setif (Setif)</option>
+			
+            <option value="OU-EPSP-15553"> EPSP Sfisef (Sfissef)</option>
+			
+            <option value="OU-EPSP-12879"> EPSP Sidi Aich (Sidi Aich)</option>
+			
+            <option value="OU-EPSP-16456"> EPSP Sidi Aissa (Sidi Aissa)</option>
+			
+            <option value="OU-EPSP-16260"> EPSP Sidi Ali (Sidi Ali)</option>
+			
+            <option value="OU-EPSP-15461"> EPSP Sidi Bel Abbes (Sidi Bel Abbes)</option>
+			
+            <option value="OU-EPSP-15216"> EPSP Sidi Boubekeur (Sidi Boubekeur)</option>
+			
+            <option value="OU-EPSP-16279"> EPSP Sidi Lakhdar (Sidi Lakhdar)</option>
+			
+            <option value="OU-EPSP-18974"> EPSP Sidi M'Hamed Benali (Sidi M'Hamed Benali)</option>
+			
+            <option value="OU-EPSP-14786"> EPSP Sidi Maarouf (Sidi Maarouf)</option>
+			
+            <option value="OU-EPSP-15356"> EPSP Sidi Mezghiche (Sidi Mezghiche)</option>
+			
+            <option value="OU-EPSP-13022"> EPSP Sidi Okba (Sidi Okba)</option>
+			
+            <option value="OU-EPSP-15258"> EPSP Skikda (Skikda)</option>
+			
+            <option value="OU-EPSP-18087"> EPSP Souk Ahras (Souk Ahras)</option>
+			
+            <option value="OU-EPSP-13499"> EPSP Sour El Ghozlane (Sour El Ghozlane)</option>
+			
+            <option value="OU-EPSP-13178"> EPSP Tabelbala (Tabalbala)</option>
+			
+            <option value="OU-EPSP-16143"> EPSP Tablat (Tablat)</option>
+			
+            <option value="OU-EPSP-18366"> EPSP Tadjenanet (Tadjenanet)</option>
+			
+            <option value="OU-EPSP-13183"> EPSP Taghit (Taghit)</option>
+			
+            <option value="OU-EPSP-14749"> EPSP Taher (Taher)</option>
+			
+            <option value="OU-EPSP-17890"> EPSP Taleb El Arbi (Taleb Larbi)</option>
+			
+            <option value="OU-EPSP-13527"> EPSP Tamenrasset (Tamanghasset)</option>
+			
+            <option value="OU-EPSP-15736"> EPSP Tamlouka (Tamlouka)</option>
+			
+            <option value="OU-EPSP-12001"> EPSP Taougrit (Taougrite)</option>
+			
+            <option value="OU-EPSP-18128"> EPSP Taoura (Taoura)</option>
+			
+            <option value="OU-EPSP-12833"> EPSP Tazmalt (Tazmalt)</option>
+			
+            <option value="OU-EPSP-13578"> EPSP Tazrouk (Tazouk)</option>
+			
+            <option value="OU-EPSP-13612"> EPSP Tebessa (Tebessa)</option>
+			
+            <option value="OU-EPSP-15488"> EPSP Telagh (Telagh)</option>
+			
+            <option value="OU-EPSP-11974"> EPSP Tenes (Tenes)</option>
+			
+            <option value="OU-EPSP-15521"> EPSP Tenira (Tenira)</option>
+			
+            <option value="OU-EPSP-12647"> EPSP Theniet El Abed (Teniet El Abed)</option>
+			
+            <option value="OU-EPSP-17702"> EPSP Theniet El Had (Theniet El Had)</option>
+			
+            <option value="OU-EPSP-14083"> EPSP Tiaret (Tiaret)</option>
+			
+            <option value="OU-EPSP-11826"> EPSP Timimoun (Timimoun)</option>
+			
+            <option value="OU-EPSP-13584"> EPSP Tin Zaouatine (Tinzaouatine)</option>
+			
+            <option value="OU-EPSP-17659"> EPSP Tindouf (Tindouf)</option>
+			
+            <option value="OU-EPSP-11880"> EPSP Tinerkouk (Tinerkouk)</option>
+			
+            <option value="OU-EPSP-18180"> EPSP Tipaza (Tipaza)</option>
+			
+            <option value="OU-EPSP-17675"> EPSP Tissemssilt (Tissemsilt)</option>
+			
+            <option value="OU-EPSP-13770"> EPSP Tlemcen (Tlemcen)</option>
+			
+            <option value="OU-EPSP-13078"> EPSP Tolga (Tolga)</option>
+			
+            <option value="OU-EPSP-16874"> EPSP Touggourt (Touggourt)</option>
+			
+            <option value="OU-EPSP-18071"> EPSP Yabous (Yabous)</option>
+			
+            <option value="OU-EPSP-19051"> EPSP Yellel (Yellel)</option>
+			
+            <option value="OU-EPSP-16729"> EPSP Zahana (Zahana)</option>
+			
+            <option value="OU-EPSP-18995"> EPSP Zemmora (Zemmoura)</option>
+			
+            <option value="OU-EPSP-14743"> EPSP Ziama Mansouriah (Ziamma Mansouriah)</option>
+			
+            <option value="OU-EPSP-15914"> EPSP Zighoud Youcef (Zighoud Youcef)</option>
+			
+            <option value="OU-EPSP-16078"> EPSP Zoubiria (Zoubiria)</option>
+			
+            <option value="OU-EPSP-13044"> EPSP Zribet El Oued (Zeribet El  Oued)</option>
+			
+            <option value="OU-PHEMO-1601"> SARL Dialamine</option>
+			
+</select>
+          </div>
+        </div>
+     </div>
+	</div> 	<!-- // end Row -->     
+    
+        <div class="space-2"></div>
+    <div class="row">
+		<div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label class="col-md-6 control-label" for="retour_dialyse">Retour en Dialyse </label>
+          <div class="col-md-6">
+            <select name="retour_dialyse" id="retour_dialyse" class="form-control" data-placeholder="Retour en Dialyse" onchange="re_d()">
+				<option value="Non">Non</option>
+                <option value="Oui">Oui</option>
+			</select>
+          </div>
+        </div>
+      </div>	
+	<div id="re_d" class="col-sm-4 col-lg-3" style="display: none">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="motif">Motif de Retour en Dialyse</label>
+          <div class="input-group col-md-8">
+            <select name="motif" id="motif" class="form-control " data-placeholder="Motif">
+				<option value="" selected=""></option>
+                <option value="/">/</option>
+                <option value="A">Après Sevrage</option>
+                <option value="R">Rejet de Greffe</option>
+            </select>
+          </div>
+        </div>
+      </div>	  	
+	</div> 	<!-- // end Row -->   
+  </div>
+            <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9 ">
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn btn-info" type="submit" onclick="controll()" style="margin-left: 100px">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Enregistrer
+                        </button>
+                    </div>
+             </div>
+
+                                </form>
+                            </div>	 		
+	                   </div>	  
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- PAGE CONTENT ENDS -->
+				</div><!-- /.main-content-inner -->
+            </div><!-- /.main-content -->
+
+			        <div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content">
+						<span class="bigger-120">
+                            <span class="bolder">RIRCD</span>
+                            <div class="space-1"></div>
+							<span class="bolder hidden-xs hidden-480" style="color: rgba(73, 160, 73, 0.94);">Direction des Systèmes d'Information et de l'Informatique</span>
+                            <span class="bolder hidden-lg hidden-md hidden-sm" style="color: rgba(73, 160, 73, 0.94);">D S I I</span>
+							 © 2017-2018
+						</span>
+						&nbsp; &nbsp;
+                        
+					</div>
+				</div>
+			</div>
+			<a href="http://hemodialyse-demo.sante.gov.dz/ajout_patient.php#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<script src="./RIRCD_files/jquery-2.1.4.min.js.téléchargement"></script>
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="./RIRCD_files/bootstrap.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/jquery-ui.custom.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/jquery.ui.touch-punch.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/chosen.jquery.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/spinbox.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/bootstrap-datepicker.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/bootstrap-timepicker.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/moment.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/daterangepicker.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/bootstrap-datetimepicker.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/bootstrap-colorpicker.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/jquery.knob.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/autosize.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/jquery.inputlimiter.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/jquery.maskedinput.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/bootstrap-tag.min.js.téléchargement"></script>
+
+<script src="./RIRCD_files/index.js.téléchargement"></script>
+		<script src="./RIRCD_files/ace-elements.min.js.téléchargement"></script>
+		<script src="./RIRCD_files/ace.min.js.téléchargement"></script>
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+                $('.modal.aside').ace_aside();
+				$('#aside-inside-modal').addClass('aside').ace_aside({container: '#my-modal > .modal-dialog'});
+            //$('#top-menu').modal('show')
+				$(document).one('ajaxloadstart.page', function(e) {
+					//in ajax mode, remove before leaving page
+					$('.modal.aside').remove();
+					$(window).off('.aside')
+				});
+                
+				$('#id-disable-check').on('click', function() {
+					var inp = $('#form-input-readonly').get(0);
+					if(inp.hasAttribute('disabled')) {
+						inp.setAttribute('readonly' , 'true');
+						inp.removeAttribute('disabled');
+						inp.value="This text field is readonly!";
+					}
+					else {
+						inp.setAttribute('disabled' , 'disabled');
+						inp.removeAttribute('readonly');
+						inp.value="This text field is disabled!";
+					}
+				});
+			
+				if(!ace.vars['touch']) {
+					$('.chosen-select').chosen({allow_single_deselect:true}); 
+					//resize the chosen on window resize
+			
+					$(window)
+					.off('resize.chosen')
+					.on('resize.chosen', function() {
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					}).trigger('resize.chosen');
+					//resize chosen on sidebar collapse/expand
+					$(document).on('settings.ace.chosen', function(e, event_name, event_val) {
+						if(event_name != 'sidebar_collapsed') return;
+						$('.chosen-select').each(function() {
+							 var $this = $(this);
+							 $this.next().css({'width': $this.parent().width()});
+						})
+					});
+			
+					$('#chosen-multiple-style .btn').on('click', function(e){
+						var target = $(this).find('input[type=radio]');
+						var which = parseInt(target.val());
+						if(which == 2) $('#form-field-select-4').addClass('tag-input-style');
+						 else $('#form-field-select-4').removeClass('tag-input-style');
+					});
+				}
+			
+				$('[data-rel=tooltip]').tooltip({container:'body'});
+				$('[data-rel=popover]').popover({container:'body'});
+				autosize($('textarea[class*=autosize]'));
+				$('textarea.limited').inputlimiter({
+					remText: '%n character%s remaining...',
+					limitText: 'max allowed : %n.'
+				});
+			
+				$.mask.definitions['~']='[+-]';
+				$('.input-mask-date').mask('99/99/9999');
+				$('.input-mask-phone').mask('(999) 999-9999');
+				$('.input-mask-eyescript').mask('~9.99 ~9.99 999');
+				$(".input-mask-product").mask("a*-999-a999",{placeholder:" ",completed:function(){alert("You typed the following: "+this.val());}});
+			
+				$( "#input-size-slider" ).css('width','200px').slider({
+					value:1,
+					range: "min",
+					min: 1,
+					max: 8,
+					step: 1,
+					slide: function( event, ui ) {
+						var sizing = ['', 'input-sm', 'input-lg', 'input-mini', 'input-small', 'input-medium', 'input-large', 'input-xlarge', 'input-xxlarge'];
+						var val = parseInt(ui.value);
+						$('#form-field-4').attr('class', sizing[val]).attr('placeholder', '.'+sizing[val]);
+					}
+				});
+			
+				$( "#input-span-slider" ).slider({
+					value:1,
+					range: "min",
+					min: 1,
+					max: 12,
+					step: 1,
+					slide: function( event, ui ) {
+						var val = parseInt(ui.value);
+						$('#form-field-5').attr('class', 'col-xs-'+val).val('.col-xs-'+val);
+					}
+				});
+			
+				//"jQuery UI Slider"
+				//range slider tooltip example
+				$( "#slider-range" ).css('height','200px').slider({
+					orientation: "vertical",
+					range: true,
+					min: 0,
+					max: 100,
+					values: [ 17, 67 ],
+					slide: function( event, ui ) {
+						var val = ui.values[$(ui.handle).index()-1] + "";
+			
+						if( !ui.handle.firstChild ) {
+							$("<div class='tooltip right in' style='display:none;left:16px;top:-6px;'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>")
+							.prependTo(ui.handle);
+						}
+						$(ui.handle.firstChild).show().children().eq(1).text(val);
+					}
+				}).find('span.ui-slider-handle').on('blur', function(){
+					$(this.firstChild).hide();
+				});
+				
+				$( "#slider-range-max" ).slider({
+					range: "max",
+					min: 1,
+					max: 10,
+					value: 2
+				});
+				
+				$( "#slider-eq > span" ).css({width:'90%', 'float':'left', margin:'15px'}).each(function() {
+					// read initial values from markup and remove that
+					var value = parseInt( $( this ).text(), 10 );
+					$( this ).empty().slider({
+						value: value,
+						range: "min",
+						animate: true
+					});
+				});
+				$("#slider-eq > span.ui-slider-purple").slider('disable');//disable third item
+			
+				$('#id-input-file-1 , #id-input-file-2').ace_file_input({
+					no_file:'No File ...',
+					btn_choose:'Choose',
+					btn_change:'Change',
+					droppable:false,
+					onchange:null,
+					thumbnail:false //| true | large
+				});
+
+				$('#id-input-file-3').ace_file_input({
+					style: 'well',
+					btn_choose: 'Drop files here or click to choose',
+					btn_change: null,
+					no_icon: 'ace-icon fa fa-cloud-upload',
+					droppable: true,
+					thumbnail: 'small'//large | fit
+					,
+					preview_error : function(filename, error_code) {
+					}
+				}).on('change', function(){
+					//console.log($(this).data('ace_input_files'));
+					//console.log($(this).data('ace_input_method'));
+				});
+
+				//dynamically change allowed formats by changing allowExt && allowMime function
+				$('#id-file-format').removeAttr('checked').on('change', function() {
+					var whitelist_ext, whitelist_mime;
+					var btn_choose
+					var no_icon
+					if(this.checked) {
+						btn_choose = "Drop images here or click to choose";
+						no_icon = "ace-icon fa fa-picture-o";
+			
+						whitelist_ext = ["jpeg", "jpg", "png", "gif" , "bmp"];
+						whitelist_mime = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/bmp"];
+					}
+					else {
+						btn_choose = "Drop files here or click to choose";
+						no_icon = "ace-icon fa fa-cloud-upload";
+						whitelist_ext = null;//all extensions are acceptable
+						whitelist_mime = null;//all mimes are acceptable
+					}
+					var file_input = $('#id-input-file-3');
+					file_input
+					.ace_file_input('update_settings',
+					{
+						'btn_choose': btn_choose,
+						'no_icon': no_icon,
+						'allowExt': whitelist_ext,
+						'allowMime': whitelist_mime
+					})
+					file_input.ace_file_input('reset_input');
+					
+					file_input
+					.off('file.error.ace')
+					.on('file.error.ace', function(e, info) {
+					});
+				});
+			
+				$('#spinner1').ace_spinner({value:0,min:0,max:200,step:10, btn_up_class:'btn-info' , btn_down_class:'btn-info'})
+				.closest('.ace-spinner')
+				.on('changed.fu.spinbox', function(){
+					//console.log($('#spinner1').val())
+				}); 
+				$('#spinner2').ace_spinner({value:0,min:0,max:10000,step:100, touch_spinner: true, icon_up:'ace-icon fa fa-caret-up bigger-110', icon_down:'ace-icon fa fa-caret-down bigger-110'});
+				$('#spinner3').ace_spinner({value:0,min:-100,max:100,step:10, on_sides: true, icon_up:'ace-icon fa fa-plus bigger-110', icon_down:'ace-icon fa fa-minus bigger-110', btn_up_class:'btn-success' , btn_down_class:'btn-danger'});
+				$('#spinner4').ace_spinner({value:0,min:-100,max:100,step:10, on_sides: true, icon_up:'ace-icon fa fa-plus', icon_down:'ace-icon fa fa-minus', btn_up_class:'btn-purple' , btn_down_class:'btn-purple'});
+			
+				//datepicker plugin
+				//link
+				$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true
+				})
+				//show datepicker when clicking on the icon
+				.next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+			
+				//or change it into a date range picker
+				$('.input-daterange').datepicker({autoclose:true});
+			
+				//to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
+				$('input[name=date-range-picker]').daterangepicker({
+					'applyClass' : 'btn-sm btn-success',
+					'cancelClass' : 'btn-sm btn-default',
+					locale: {
+						applyLabel: 'Apply',
+						cancelLabel: 'Cancel',
+					}
+				})
+				.prev().on(ace.click_event, function(){
+					$(this).next().focus();
+				});
+			
+				$('#timepicker1').timepicker({
+					minuteStep: 1,
+					showSeconds: true,
+					showMeridian: false,
+					disableFocus: true,
+					icons: {
+						up: 'fa fa-chevron-up',
+						down: 'fa fa-chevron-down'
+					}
+				}).on('focus', function() {
+					$('#timepicker1').timepicker('showWidget');
+				}).next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+				
+				if(!ace.vars['old_ie']) $('#date-timepicker1').datetimepicker({
+				 //format: 'MM/DD/YYYY h:mm:ss A',//use this option to display seconds
+				 icons: {
+					time: 'fa fa-clock-o',
+					date: 'fa fa-calendar',
+					up: 'fa fa-chevron-up',
+					down: 'fa fa-chevron-down',
+					previous: 'fa fa-chevron-left',
+					next: 'fa fa-chevron-right',
+					today: 'fa fa-arrows ',
+					clear: 'fa fa-trash',
+					close: 'fa fa-times'
+				 }
+				}).next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+				
+				$('#colorpicker1').colorpicker();
+				$('#simple-colorpicker-1').ace_colorpicker();
+				$(".knob").knob();
+				
+				var tag_input = $('#form-field-tags');
+				try{
+					tag_input.tag(
+					  {
+						placeholder:tag_input.attr('placeholder'),
+						//enable typeahead by specifying the source array
+						source: ace.vars['US_STATES'],//defined in ace.js >> ace.enable_search_ahead
+				
+					  }
+					)
+			
+					//programmatically add/remove a tag
+					var $tag_obj = $('#form-field-tags').data('tag');
+					$tag_obj.add('Programmatically Added');
+					
+					var index = $tag_obj.inValues('some tag');
+					$tag_obj.remove(index);
+				}
+				catch(e) {
+					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+					//autosize($('#form-field-tags'));
+				}
+				
+				/////////
+				$('#modal-form input[type=file]').ace_file_input({
+					style:'well',
+					btn_choose:'Drop files here or click to choose',
+					btn_change:null,
+					no_icon:'ace-icon fa fa-cloud-upload',
+					droppable:true,
+					thumbnail:'large'
+				})
+				
+				//chosen plugin inside a modal will have a zero width because the select element is originally hidden
+				//and its width cannot be determined.
+				//so we set the width after modal is show
+				$('#modal-form').on('shown.bs.modal', function () {
+					if(!ace.vars['touch']) {
+						$(this).find('.chosen-container').each(function(){
+							$(this).find('a:first-child').css('width' , '210px');
+							$(this).find('.chosen-drop').css('width' , '210px');
+							$(this).find('.chosen-search input').css('width' , '200px');
+						});
+					}
+				})
+
+				$(document).one('ajaxloadstart.page', function(e) {
+					autosize.destroy('textarea[class*=autosize]')
+					
+					$('.limiterBox,.autosizejs').remove();
+					$('.daterangepicker.dropdown-menu,.colorpicker.dropdown-menu,.bootstrap-datetimepicker-widget.dropdown-menu').remove();
+				});
+
+				
+$(document).ready(function(){    
+    document.getElementById("transfert").style.display= false;
+	$('#w_naissance').load('wilaya.php?im=');
+    $('#w_naissance').change(function(){
+		$('#d_naissance').load('daira.php?w='+$('#w_naissance').val());
+		});
+    
+    $('#d_naissance').change(function(){
+		$('#com_naissance').load('com_naiss.php?w='+$('#w_naissance').val()+'&&d='+$('#d_naissance').val());
+		});
+    
+	$('#w_residance').load('wilaya.php?im=');
+    $('#w_residance').change(function(){
+		$('#d_residance').load('daira.php?w='+$('#w_residance').val());
+		});
+    
+    $('#d_residance').change(function(){
+    $('#com_residance').load('com_naiss.php?w='+$('#w_residance').val()+'&&d='+$('#d_residance').val());
+    });
+    
+	$('#affection').load('affection.php?im=');
+    
+	$('#str_destinatrice').load('etablissement_all.php?im=');
+	
+}); 				
+			});
+		</script>
+	
+
+<div id="right-menu" class="modal aside aside-right aside-vc aside-fixed navbar-offset aside-hidden no-backdrop" data-body-scroll="false" data-offset="true" data-placement="right" data-fixed="true" data-backdrop="false" tabindex="-1">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header no-padding">
+												<div class="table-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+														<span class="white">×</span>
+													</button>
+													Unité de dialyse
+ 												</div>
+											</div>
+
+											<div class="modal-body">
+                                              <h4 class="">Unité de dialyse</h4>
+											  EPH Djelfa (Djelfa)                                                <div class="header green"></div>
+                                              <h4 class="">Secteur d'activité</h4>
+											    publique								                <div class="header green"></div>
+                                              <h4 class="">Type de dialyse</h4>
+								               											 <div class="header green"></div>
+                                              <h4 class="">Wilaya</h4>
+																							    <div class="header green"></div>
+                                              <h4 class="">Daira</h4>
+											    								                <div class="header green"></div>
+                                              <h4 class="">Commune</h4>
+																							</div>
+										</div><!-- /.modal-content -->
+
+										<button class="aside-trigger btn btn-success btn-app btn-xs ace-settings-btn" data-target="#right-menu" data-toggle="modal" type="button">
+											<i data-icon1="fa-plus" data-icon2="fa-minus" class="ace-icon fa fa-plus bigger-110 icon-only"></i>
+										</button>
+									</div><!-- /.modal-dialog -->
+								</div><div id="limiterBox" class="limiterBox" style="position: absolute; display: none;"></div></body></html>

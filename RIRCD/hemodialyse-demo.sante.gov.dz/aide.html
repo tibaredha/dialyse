@@ -1,0 +1,403 @@
+	 <script language="javascript">
+	  document.location = "index.html";
+	  </script>
+	
+<!DOCTYPE html>
+<html lang="en">
+	
+<!-- Mirrored from hemodialyse-demo.sante.gov.dz/aide.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 10:35:14 GMT -->
+<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>RIRCD Aide</title>
+        <link rel="icon" href="assets/images/gallery/S1.png" type="image/png" />
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+        <style>
+            .utilisateur{
+                padding-right: 10px;
+                margin-left: -20px;
+                margin-right: -20px;
+                background-color: rgba(73, 160, 73, 0.94);
+                border-color: rgba(73, 160, 73, 0.94);
+            }
+            .dimension_Div{
+                height: 400px;
+                width: 1100px;
+                overflow: auto;
+            }
+        </style>
+	</head>
+
+	<body class="no-skin">
+		<div id="navbar" class="navbar navbar-default ace-save-state" style="background-color: rgba(73, 160, 73, 0.94);">
+			<div class="navbar-container ace-save-state" id="navbar-container">
+                <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                <div class="navbar-buttons navbar-header pull-left">
+                    <ul class="nav ace-nav">
+                        <li class="transparent">
+                         <a href="accueil.html" data-toggle="dropdown" class="dropdown-toggle hidden-480 hidden-xs">
+                                <small style="font-size: 16px">
+                                    REGISTRE DES INSUFFISANTS RENAUX
+                                    <div style="margin-top:-20px;">&nbsp;&nbsp;CHRONIQUES DIALYSES </div>
+                                </small>
+                            </a>
+                            <a href="accueil.html" data-toggle="dropdown" 
+                               class="dropdown-toggle hidden-lg hidden-md hidden-sm">
+                                <small style="font-size: 16px;">
+                                    R I R C D
+                                </small>
+                            </a>
+                        </li>
+                        <li class="transparent pull-center">
+                        <a href="accueil.html" data-toggle="dropdown" class="dropdown-toggle hidden-480 hidden-xs hidden-sm">
+                            <small style="font-size: 16px">
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MINISTERE DE LA SANTE, DE LA POPULATION ET DE LA REFORME 
+                                <div style="margin-top:-20px;"> HOSPITALIERE </div>
+                            </small>
+                         </a>
+                            <a href="accueil.html" data-toggle="dropdown" class="dropdown-toggle hidden-lg hidden-md pull-center">
+                                <small style="font-size: 16px;">
+                                    M S P R H
+                                </small>
+                            </a>
+                        </li>
+                    </ul>
+				</div>
+				<div class="navbar-buttons navbar-header pull-right" role="navigation">
+					<table><tr>
+                        <td style="width: 150px">
+                            <a href="#" class="dropdown-toggle white" style="">
+								<span>
+									<small style="width: 200px"> </small>
+                                    <br>								</span>
+                            
+							</a>
+                        </td>
+                        <td>
+					<ul class="nav ace-nav">
+						<li class="light-green dropdown-modal" style="width: 50px">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                               <div class="utilisateur">
+                                <img class="nav-user-photo" src="assets/images/avatars/avatar2.png" width= "50" height="42"/>
+                                   <i class="ace-icon fa fa-caret-down white"></i>
+                               </div>				
+							</a>
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-home"></i>
+										Accueil
+									</a>
+								</li>
+								<li>
+									<a href="profile.html">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
+									</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a href="fermes.html">
+										<i class="ace-icon fa fa-power-off"></i>
+										Deconnexion
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+				</div>
+			</div><!-- /.navbar-container -->
+		</div>
+
+		<div class="main-container ace-save-state" id="main-container" >
+			<script type="text/javascript">
+				try{ace.settings.loadState('main-container')}catch(e){}
+			</script>
+            <div id="sidebar" class="sidebar responsive ace-save-state">
+				<script type="text/javascript">
+					try{ace.settings.loadState('sidebar')}catch(e){}
+				</script>
+				 
+<ul class="nav nav-list">
+					<li class="">
+						<a href="accueil.html">
+							<i class="menu-icon glyphicon glyphicon-home blue"></i>
+							<span class="menu-text">Accueil</span></a>
+						<b class="arrow"></b>
+					</li>
+        					<li class="">
+						 <a href="ajout_patient.html">
+							<i class="menu-icon glyphicon glyphicon-user green"></i>
+							<span class="menu-text">Patient	</span>
+						</a>
+                        <b class="arrow"></b>
+				    </li>
+            <!--        
+                    <li class="">
+                        <a href="recherche_patient.php">
+                            <i class="menu-icon glyphicon glyphicon-search blue"></i>
+                            <span class="menu-text">Recherche</span>
+                        </a>
+                        <b class="arrow"></b>
+                   </li>
+					-->		
+							
+							
+							
+							<!-- <li class="">
+								<a href="#" class="dropdown-toggle">
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Grossiste 
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+
+								<b class="arrow"></b>
+
+								<ul class="submenu">
+									<li class="">
+										<a href="top-menu.html">
+											<i class="menu-icon fa fa-plus purple"></i>
+											Ajout
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="">
+										<a href="two-menu-1.html">
+											<i class="menu-icon fa fa-pencil orange"></i>
+											Modification
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="">
+										<a href="two-menu-2.html">
+											<i class="menu-icon fa fa-eye pink"></i>
+											Etat de sortie
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									
+								</ul>
+							</li>-->
+			
+
+				<!--	<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon  glyphicon glyphicon-list-alt"></i>
+							<span class="menu-text"> Garde officine </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li class="">
+								<a href="garde.php">
+									<i class="menu-icon fa fa-plus purple"></i>
+									Ajout
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="etat_garde.php">
+									<i class="menu-icon fa fa-eye pink"></i>
+									Etat de sortie
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>-->
+
+					
+
+					<li class="">
+						<a href="aide.html">
+							<i class="menu-icon glyphicon glyphicon-question-sign purple"></i>
+							<span class="menu-text"> Aide </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+                    <li class="">
+						<a href="arrete.html">
+							<i class="menu-icon fa fa-book red"></i>
+							<span class="menu-text"> Arret&eacute; N&deg; 12 </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+					
+
+					
+				</ul>
+				             </div>
+
+			<div class="main-content">
+				<div class="main-content-inner" >
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb" >
+							<li>
+								<i class="ace-icon fa fa-home home-icon blue"></i>
+								<a href="accueil.html">Accueil</a>
+							</li>
+                            <li class="active">Aide</li>
+						</ul><!-- /.breadcrumb -->
+                        <a href="guide_utilisateur.pdf" download class="btn btn-sm btn-primary">T&eacute;l&eacute;charger le guide d&#39;utilisation
+                        </a>
+					</div>
+
+					<div class="page-content" >
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+                                     <div id="user-profile-2" class="user-profile">
+										<div class="tabbable">
+											<ul class="nav nav-tabs padding-18">
+												<li class="active">
+													<a data-toggle="tab" href="#home">
+														<i class="green ace-icon fa fa-home bigger-120"></i>
+														Accueil
+													</a>
+												</li>
+												<li>
+													<a data-toggle="tab" href="#feed">
+														<i class="orange ace-icon fa fa-key bigger-120"></i>
+														Changer le mot de passe
+													</a>
+												</li>
+												<li>
+													<a data-toggle="tab" href="#friends">
+														<i class="blue ace-icon fa fa-users bigger-120"></i>
+														Ajouter un patient
+													</a>
+												</li>
+											</ul>
+											<div class="tab-content no-border padding-24">
+												<div id="home" class="tab-pane in active">
+													<div class="row" >
+														<div class="col-xs-12 col-sm-2" >
+                                                            <label class="col-md-24 control-label">
+                                                                La première page sur laquelle on aboutira, après authentification, affiche la liste des malades selon le niveau d'accès.
+                                                                <div>
+                                                                Si on accède avec un compte établissement on verra uniquement les patients de l'établissement, si par contre on dispose d'un compte DSP, la liste affichera tous les malades de la wilaya, et si l'on accède avec un compte ministère, on aura accès à tous les malades enregistrés.
+                                                                    </div>
+                                                            </label>
+														</div><!-- /.col -->
+                                                        <div class="col-xs-12 col-sm-10" style="float: right">
+                                                            <img src="assets/images/gallery/Accueil_Aide.png"
+                                                                 class="img-responsive" alt="">
+                                                        </div>
+													</div><!-- /.row -->
+												</div><!-- /#home -->
+
+												<div id="feed" class="tab-pane">
+													<div class="profile-feed row">
+														<div class="col-sm-6">
+                                                            <img src="assets/images/gallery/Change_passe1_Aide.png" class="img-responsive" />
+														</div><!-- /.col -->
+
+														<div class="col-sm-6">
+															<img src="assets/images/gallery/Change_passe2_Aide.png" class="img-responsive" />
+														</div><!-- /.col -->
+													</div><!-- /.row -->
+
+													<div class="space-12"></div>
+
+													<div class="">
+														Pour changer le mot de passe, il suffit de&#58; 
+                                                        <ul>
+                                                            <li>En haut à droit cliquer sur l&#39;icon </li>
+                                                            <li>Choisir &#171; Profile &#187;</li>
+                                                            <li>Remplire les champs </li>
+                                                            <li>Cliquer sur le bouton &#171; Modifier &#187; </li>
+                                                        </ul>
+													</div>
+												</div><!-- /#feed -->
+
+												<div id="friends" class="tab-pane">
+                                                    <div class="row">
+                                                        Pour saisir un nouveau cas, aller dans le menu gauche et cliquer sur &#171; <b>Patient</b> &#187;.
+                                                    </div>
+                                                    <div class="profile-feed row">
+														<div class="col-sm-5">
+                                                            <img src="assets/images/gallery/Ajout_Patient1_Aide.png" class="img-responsive" />
+														</div><!-- /.col -->
+                                                        <div class="col-sm-2">
+                                                            <br><br>
+                                                            <u>Ou</u>
+                                                        </div>
+														<div class="col-sm-5">
+															<img src="assets/images/gallery/Ajout_Patient2_Aide.png" class="img-responsive" />
+														</div><!-- /.col -->
+													</div><!-- /.row -->
+                                                    <div class="row">
+                                                        Remplire le formulaire et cliquer sur &#171; <b>Enregistrer</b> &#187;.
+                                                    </div><!-- /.row -->
+                                                    <div class="row">
+                                                        <img src="assets/images/gallery/Ajout_Patient3_Aide.png" class="img-responsive" />
+                                                    </div><!-- /.row -->
+												</div><!-- /#friends -->
+											</div>
+										</div>
+									</div> 									
+									</div>
+								</div>
+								<!-- PAGE CONTENT ENDS -->
+                            </div>
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				
+			</div><!-- /.main-content -->
+
+			        <div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content">
+						<span class="bigger-120">
+                            <span class="bolder">RIRCD</span>
+                            <div class="space-1"></div>
+							<span class="bolder hidden-xs hidden-480" style="color: rgba(73, 160, 73, 0.94);">Direction des Syst&egrave;mes d&#39;Information et de l&#39;Informatique</span>
+                            <span class="bolder hidden-lg hidden-md hidden-sm" style="color: rgba(73, 160, 73, 0.94);">D S I I</span>
+							 &copy; 2017-2018
+						</span>
+						&nbsp; &nbsp;
+                        
+					</div>
+				</div>
+			</div>
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<script src="assets/js/jquery-2.1.4.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+	</body>
+
+<!-- Mirrored from hemodialyse-demo.sante.gov.dz/aide.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 10:35:27 GMT -->
+</html>

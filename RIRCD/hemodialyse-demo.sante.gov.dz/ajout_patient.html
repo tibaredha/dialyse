@@ -1,0 +1,435 @@
+	 <script language="javascript">
+	  document.location = "index.html";
+	  </script>
+	
+<!DOCTYPE html>
+<html lang="en">
+	
+<!-- Mirrored from hemodialyse-demo.sante.gov.dz/ajout_patient.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 10:35:13 GMT -->
+<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>RIRCD</title>
+
+		<meta name="description" content="Common form elements and layouts" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+		<link rel="stylesheet" href="assets/css/chosen.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-timepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/daterangepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-colorpicker.min.css" />
+		<link rel="stylesheet" href="assets/css/my_css.css" />
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+		<script src="assets/js/ace-extra.min.js"></script>
+<script src="js/jquery.min.js"></script>
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+		
+<script language="javascript">
+/*******************************************************************************************/
+
+    function initialiser()
+    {
+       document.form1.init.value=true;
+       document.form1.submit();
+        
+    }
+
+     function PopupCentrer(page,largeur,hauteur,options) 
+    {
+      var top=(screen.height-hauteur)/3;
+      var left=(screen.width-largeur)/2;
+      window.open(page,"","top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+
+    }
+    function controll(){
+       document.getElementById('cacheP').value= '1';
+    }
+    
+    function show_req(){
+        //document.getElementById("precise").removeAttribute("required");
+        var x= document.getElementById("autre_affection").checked;
+        if (x== true){
+            document.getElementById("preci").className= "";   
+       //     document.getElementById("preciser").required= true;
+            
+            }else{ 
+                document.getElementById("preci").className= "hidden";   
+          //      document.getElementById("preciser").required= false;
+     }}
+
+    function dt_inscription(){
+        var x= document.getElementById("inscrit").value;
+        if (x== "Oui"){
+            document.getElementById("dt_ins").style.display="";
+      //      document.getElementById("date_inscription").required= true;
+        }else{
+            document.getElementById("dt_ins").style.display="none";       
+            //    document.getElementById("date_inscription").required= false;
+
+        }
+    } 
+    function dt_tr(){
+        var x= document.getElementById("transfert").value;
+        if (x== "Oui"){
+            document.getElementById("dt_tr").style.display="";
+     //       document.getElementById("date_transfert").required= true;
+            document.getElementById("str_dist").style.display="";
+     //       document.getElementById("str_destinatrice").required= true;
+        }else{
+            document.getElementById("dt_tr").style.display="none";
+     //       document.getElementById("date_transfert").required= false;
+            document.getElementById("str_dist").style.display="none";
+    //        document.getElementById("str_destinatrice").required= false;
+        }
+    } 
+    function re_d(){
+        var x= document.getElementById("retour_dialyse").value;
+        if (x== "Oui"){
+            document.getElementById("re_d").style.display="";
+    //        document.getElementById("motif").required= true;
+        }else{
+            document.getElementById("re_d").style.display="none";
+     //       document.getElementById("motif").required= false;
+    }   }
+    function genererCodeP(){
+        var dt_dec= Date('Y');
+        var dt_nais= document.getElementById("date_naissance").value;
+        var cod_wil= document.getElementById("w_naissance").value;
+        var cod_com3= document.getElementById("com_naissance").value;
+        var n_acte= document.getElementById("acte").value;
+        var res1 = dt_nais.substring(8, 10);
+        var res2 = dt_dec.substring(13, 15);
+        var codePati= res1+cod_wil+cod_com3+n_acte+res2;
+        if(dt_dec != '' && dt_nais != '' && cod_wil != '' && cod_com3 != '' && n_acte != ''){
+            document.getElementById("show_codeP").style.display="";
+            document.getElementById("code_patient").value= codePati;           
+    }    }
+</script>
+<style>
+    .up{
+        margin-top: -20px;
+    }
+    * {margin:0; padding:0}
+    .utilisateur{
+        padding-right: 10px;
+        margin-left: -20px;
+        margin-right: -20px;
+        background-color: rgba(73, 160, 73, 0.94);
+        border-color: rgba(73, 160, 73, 0.94);
+    }
+
+</style>			
+	</head>
+
+	<body class="no-skin">   
+        <div id="navbar" class="navbar navbar-default ace-save-state" style="background-color: rgba(73, 160, 73, 0.94);">
+			<div class="navbar-container ace-save-state green" id="navbar-container">
+                <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                <div class="navbar-buttons navbar-header pull-left">
+                    <ul class="nav ace-nav">
+                        <li class="transparent">
+                         <a href="accueil.html" data-toggle="dropdown" class="dropdown-toggle hidden-480 hidden-xs">
+                                <small style="font-size: 16px">
+                                    REGISTRE DES INSUFFISANTS RENAUX
+                                    <div style="margin-top:-20px;">&nbsp;&nbsp;CHRONIQUES DIALYSES </div>
+                                </small>
+                            </a>
+                            <a href="accueil.html" data-toggle="dropdown" class="dropdown-toggle hidden-lg hidden-md hidden-sm">
+                                <small style="font-size: 16px;">
+                                    R I R C D
+                                </small>
+                            </a>
+                        </li>
+                        <li class="transparent pull-center">
+                         <a href="accueil.html" data-toggle="dropdown" class="dropdown-toggle hidden-480 hidden-xs hidden-sm">
+                                <small style="font-size: 16px">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MINISTERE DE LA SANTE, DE LA POPULATION ET DE LA REFORME 
+                                    <div style="margin-top:-20px;"> HOSPITALIERE </div>
+                                </small>
+                            </a>
+                            <a href="accueil.html" data-toggle="dropdown" class="dropdown-toggle hidden-lg hidden-md pull-center">
+                                <small style="font-size: 16px;">
+                                    M S P R H
+                                </small>
+                            </a>
+                        </li>
+                    </ul>
+				</div>
+				<div class="navbar-buttons navbar-header pull-right" role="navigation">
+                    <table><tr>
+                        <td style="width: 150px">
+                            <a href="#" class="dropdown-toggle white" style="">
+								<span>
+									<small style="width: 200px"> </small>
+                                    <br>								</span>
+							</a>
+                        </td>
+                        <td>
+					<ul class="nav ace-nav">
+						<li class="light-green dropdown-modal">
+							<div class="utilisateur">
+                                <img class="nav-user-photo" src="assets/images/avatars/avatar2.png" width= "50" height="42"/>
+                                   <i class="ace-icon fa fa-caret-down white"></i>
+                            </div>
+                           
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-home"></i>
+										Accueil
+									</a>
+								</li>
+
+								<li>
+									<a href="profile.html">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
+									</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a href="fermes.html">
+										<i class="ace-icon fa fa-power-off"></i>
+										Deconnexion
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+				</div>
+                
+                
+			</div><!-- /.navbar-container -->
+		</div>		
+		<div class="main-container ace-save-state" id="main-container" >
+			<script type="text/javascript">
+				try{ace.settings.loadState('main-container')}catch(e){}
+			</script>
+
+			<div id="sidebar" class="sidebar responsive ace-save-state ">
+				<script type="text/javascript">
+					try{ace.settings.loadState('sidebar')}catch(e){}
+				</script>
+
+				 
+<ul class="nav nav-list">
+					<li class="">
+						<a href="accueil.html">
+							<i class="menu-icon glyphicon glyphicon-home blue"></i>
+							<span class="menu-text">Accueil</span></a>
+						<b class="arrow"></b>
+					</li>
+        					<li class="">
+						 <a href="ajout_patient.html">
+							<i class="menu-icon glyphicon glyphicon-user green"></i>
+							<span class="menu-text">Patient	</span>
+						</a>
+                        <b class="arrow"></b>
+				    </li>
+            <!--        
+                    <li class="">
+                        <a href="recherche_patient.php">
+                            <i class="menu-icon glyphicon glyphicon-search blue"></i>
+                            <span class="menu-text">Recherche</span>
+                        </a>
+                        <b class="arrow"></b>
+                   </li>
+					-->		
+							
+							
+							
+							<!-- <li class="">
+								<a href="#" class="dropdown-toggle">
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Grossiste 
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+
+								<b class="arrow"></b>
+
+								<ul class="submenu">
+									<li class="">
+										<a href="top-menu.html">
+											<i class="menu-icon fa fa-plus purple"></i>
+											Ajout
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="">
+										<a href="two-menu-1.html">
+											<i class="menu-icon fa fa-pencil orange"></i>
+											Modification
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="">
+										<a href="two-menu-2.html">
+											<i class="menu-icon fa fa-eye pink"></i>
+											Etat de sortie
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									
+								</ul>
+							</li>-->
+			
+
+				<!--	<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon  glyphicon glyphicon-list-alt"></i>
+							<span class="menu-text"> Garde officine </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li class="">
+								<a href="garde.php">
+									<i class="menu-icon fa fa-plus purple"></i>
+									Ajout
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="etat_garde.php">
+									<i class="menu-icon fa fa-eye pink"></i>
+									Etat de sortie
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>-->
+
+					
+
+					<li class="">
+						<a href="aide.html">
+							<i class="menu-icon glyphicon glyphicon-question-sign purple"></i>
+							<span class="menu-text"> Aide </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+                    <li class="">
+						<a href="arrete.html">
+							<i class="menu-icon fa fa-book red"></i>
+							<span class="menu-text"> Arret&eacute; N&deg; 12 </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+					
+
+					
+				</ul>
+				 
+				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+				</div>
+			</div>			
+
+			<div class="main-content">
+				<div class="main-content-inner" >
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb" >
+							<li>
+								<i class="ace-icon fa fa-home home-icon blue"></i>
+								<a href="accueil.html">Accueil</a>
+							</li>
+							<li class="active">	Patient</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+
+					<div class="page-content" >
+						<div class="page-header">
+                            <h1 class="green">
+                                Ajouter un patient
+                                <label style="display: none;" id="show_codeP">
+                                    <label class="hidden-480 hidden-xs hidden-sm" 
+                                           style="margin-left: 500px;"> 
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </label>Code Patient &nbsp;
+                                    <input type="text" name="code_patient" id="code_patient" 
+                                           style="border: none; background-color: transparent; color: red" 
+                                           class="" size="13" readonly>
+                                </label>
+                            </h1>
+                                    
+						</div><!-- /.page-header -->
+                        <div class="row"> <!-- Modal -->
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div id="right-menu" class="modal aside" data-body-scroll="false" data-offset="true" 
+                                     data-placement="right" data-fixed="true" data-backdrop="false" tabindex="-1">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header no-padding">
+												<div class="table-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+														<span class="white">&times;</span>
+													</button>
+													Unit&eacute; de dialyse
+ 												</div>
+											</div>
+
+											<div class="modal-body">
+                                              <h4 class="">Unit&eacute; de dialyse</h4>
+											                                                  <div class="header green"></div>
+                                              <h4 class="">Secteur d&#39;activit&eacute;</h4>
+											    								                <div class="header green"></div>
+                                              <h4 class="">Type de dialyse</h4>
+								               

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+	
+<!-- Mirrored from hemodialyse-demo.sante.gov.dz/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 10:34:41 GMT -->
+<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>Login - Modialyse</title>
+
+		<meta name="description" content="User login page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<!-- my style -->
+        <link rel="stylesheet" href="style/my_css.html" />
+        
+        <!-- bootstrap & fontawesome -->
+        <link rel="icon" href="assets/images/Hadj/hadj33.html" type="image/png" />
+		<link rel="stylesheet" href="assets/css/my_css.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="assets/css/ace.min.css" />
+        <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+<style>
+    .contact{
+        font-family :cursive, serif;
+        font-weight : normal; 
+        display:block;
+        margin-left: 90px;
+        font-size: 22px;
+    }
+</style>
+	</head>
+
+	<body class="login-layout light-login">
+        <div id="navbar" class="navbar navbar-default   ace-save-state" style="background-color: rgba(73, 160, 73, 0.94);">
+            <div class="navbar-container ace-save-state" id="navbar-container">
+                <div class="haut">
+                    <span class="black bolder">
+					MINISTERE DE LA SANTE, DE LA POPULATION ET DE LA REFORME HOSPITALIERE
+                    </span>
+                </div>
+            </div>
+        </div>
+		<div class="main-container">
+<!--            <div class="cadre">
+                            <h2 class="haut" >
+                                
+                            </h2>    
+                        </div>
+-->
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+                        
+						<div class="login-container">
+                        <br>
+							<div class="center">
+								<h1>
+									<img class="log-sh" src="assets/images/gallery/S1.png"  >
+                                    <br>
+									<span class="red" style="font-size: 20px">REGISTRE DES INSUFFISANTS RENAUX
+  CHRONIQUES DIALYSES</span>
+								</h1>
+							
+							</div>
+
+							<div class="space-6"></div>
+
+							<div class="position-relative">
+								<div id="login-box" class="login-box visible widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header blue lighter bigger">
+												Authentification pour connexion
+											</h4>
+
+											<div class="space-6"></div>
+
+											<form name="forme" method="POST" action="http://hemodialyse-demo.sante.gov.dz/login/index.php">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" name="user" id="user" class="form-control" placeholder="Nom d'utilisateur" autocomplete="off" onKeyUp="javascript:this.value=this.value.toUpperCase();" required />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" name="psw" id="psw" class="form-control" placeholder="Mot de passe" autocomplete="off" required/>
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+													</label>
+
+													<div class="space"></div>
+													<div class="clearfix">
+											<button type="submit" class="width-37 pull-right btn btn-sm btn-success ">
+											<i class="ace-icon fa fa-key"></i>
+															<span class="bigger-110 ">Connexion</span>
+														</button>
+													</div>
+													<div class="space-4"></div>
+												</fieldset>
+											</form>
+										</div><!-- /.widget-main -->
+
+										<div class="toolbar clearfix" style="background-color: rgba(73, 160, 73, 0.94)">
+											<div>
+											</div>
+
+											<div class="" >
+												<a href="#" data-target="#signup-box" class="user-signup-link white">
+													Contactez-nous 
+													<i class="ace-icon fa fa-arrow-right"></i>
+												</a>
+											</div>
+										</div>
+									</div><!-- /.widget-body -->
+								</div><!-- /.login-box -->
+<div id="signup-box" class="signup-box widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+                                            <h4 class="contact">
+                                                Contactez-nous
+                                            </h4>
+											<h4 class="header blue lighter bigger">
+												<i class="ace-icon fa fa-users green"></i>
+												Messagerie Intranet
+											</h4>
+
+											<div class="space-3"></div>
+							
+                                <label class="widget-title">
+                                    
+                                    rircd@intranet.sante.gov.dz
+                                </label>  
+                                            <div class="space-4"></div>
+
+                                      
+                                <h4 class="header blue lighter bigger">
+											<i class="ace-icon fa fa-phone green bigger"></i>
+												Direction
+										</h4>
+											<div class="space-3"></div>
+                                <label class="widget-title">
+                                    021 27  64 97
+                                </label>  
+
+										</div>
+
+										<div class="toolbar center" style="background-color: rgba(53, 105, 247, 0.87)">
+											<a href="#" data-target="#login-box" class="back-to-login-link">
+												<i class="ace-icon fa fa-arrow-left"></i>
+												 Retour 
+											</a>
+										</div>
+									</div><!-- /.widget-body -->
+								</div><!-- /.signup-box -->
+							</div><!-- /.position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+        <!--       <div class="footer bas">
+                    <h3>Direction des Systèmes d'Iinformations et de l'Informatique</h3>
+                </div>      -->
+			</div><!-- /.main-content -->
+            
+            <div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content bas" style="background-color: rgba(73, 160, 73, 0.94);">
+						<span class="bigger-120 ">
+							<span class="black bolder">Direction des Systèmes d'Informations et de l'Informatique</span>
+						</span>
+					</div>
+				</div>
+			</div> 
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+		<script src="assets/js/jquery-2.1.4.min.js"></script>
+
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+			 $(document).on('click', '.toolbar a[data-target]', function(e) {
+				e.preventDefault();
+				var target = $(this).data('target');
+				$('.widget-box.visible').removeClass('visible');//hide others
+				$(target).addClass('visible');//show target
+			 });
+			});
+
+		</script>
+	</body>
+
+<!-- Mirrored from hemodialyse-demo.sante.gov.dz/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 May 2018 10:34:43 GMT -->
+</html>

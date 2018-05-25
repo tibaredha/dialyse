@@ -1,0 +1,19 @@
+/**
+ * This was built using the scrollie jQuery Plugin
+ * https://github.com/Funsella/jquery-scrollie
+ */
+
+$(window).on("scroll", function() {
+    if($(window).scrollTop() > 110) {
+        $(".header1").addClass("active");
+        document.getElementById('image_head1').style.display='none';
+        document.getElementById('image_head2').style.display='';
+       // document.getElementById('a22').style.color='white';
+    } else {
+        //remove the background property so it comes transparent again (defined in your css)
+       $(".header1").removeClass("active");
+        document.getElementById('image_head1').style.display='';
+        document.getElementById('image_head2').style.display='none';
+        //document.getElementById('a22').style.color=red;
+    }
+});
