@@ -1,5 +1,5 @@
 <div class="sheader1l"><p id="lacceuil"><?php echo "";echo $this->msg; echo "";?></p></div><div class="sheader1r"><p id="lsetup"><?php html::NAV();?></p></div>
-<div class="sheader2l">Système électronique d'enregistrement des décès algerien</div>
+<div class="sheader2l">Système électronique d'enregistrement des insuffisants renaux chroniques dialyses algerien</div>
 <div class="sheader2r"></div>
 <div class="contentl">
 <marquee behavior="slide" direction="up" scrollamount="2">
