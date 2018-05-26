@@ -37,6 +37,6 @@
 </div>	
 <div class="content"><img id="image" src="<?php echo URL;?>public/images/accueil.jpg"></div>
 <div class="contentr"><img id="image" src="<?php echo URL;?>public/images/<?php echo logod;?>"></div>	
-<div class="scontentl2"><?php echo ""; echo "Algerian Electronic Death Registration System";?></div>		
+<div class="scontentl2"><?php echo ""; echo "Algerian Electronic chronic renal failure Registration System";?></div>		
 <div class="scontentl3"><?php html::rsc();?></div>
 <div class="scontentr1"><?php echo "";echo dsp; echo "";?></div>		
