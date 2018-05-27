@@ -584,7 +584,7 @@ background:#FFFFE0;
 	height: 100%;
 	top: 0;
 	left: 0;
-	background: rgba(0, 0 ,0, 0.7);
+	background: green;
 	z-index: 99;
 	text-align: center;
 	display: none;
@@ -593,11 +593,11 @@ background:#FFFFE0;
 
 
 .form_upload {
-	width: 400px;
-	height: 240px;
+	width: 500px;
+	height: 300px;
 	border: 1px solid #999999;
 	border-radius: 10px;
-	background: #ffffff;
+	background: #FFFFE0;
 	color: #666666;
 	margin: auto;
 	margin-top: 160px;
@@ -611,8 +611,8 @@ background:#FFFFE0;
 	margin: 0 0 20px 0;
 }
 .file_input {
-	width: 97%;
-	background: #eaeaea;
+	width: 100%;
+	background: red;
 	border: 1px solid #999999;
 	border-radius: 5px;
 	color: #333333;
@@ -644,7 +644,7 @@ background:#FFFFE0;
     font-size: 20px;
     line-height: 16px;
     width: 18px;
-    height: 18px;
+    height: 22px;
     border: 1px solid #cccccc;
     border-radius: 5px;
     background: #F0F0F0;

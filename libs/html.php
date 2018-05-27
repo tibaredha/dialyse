@@ -35,6 +35,8 @@ class HTML  {
 	echo '<a href="http://www.sante.gov.dz/"><img src="'.URL.'public/images/lb.jpg" width="16" height="16" border="0" alt=""/></a>';echo '&nbsp;';
 	echo '<a href="http://www.dsp-djelfa.dz/index.php/ar/"><img src="'.URL.'public/images/sante.jpg" width="16" height="16" border="0" alt=""/></a>';echo '&nbsp;';
 	echo '<a href="http://www.ans.dz/index.php/fr/"><img src="'.URL.'public/images/gs.jpg" width="16" height="16" border="0" alt=""/></a>';echo '&nbsp;';
+	echo '<a href="http://rircd.sante.gov.dz/"><img src="'.URL.'public/images/dialyse.jpg" width="16" height="16" border="0" alt=""/></a>';echo '&nbsp;';
+	echo '<a href="http://hemodialyse-demo.sante.gov.dz/"><img src="'.URL.'public/images/dialyse.jpg" width="16" height="16" border="0" alt=""/></a>';echo '&nbsp;';
 	}
 	
 	

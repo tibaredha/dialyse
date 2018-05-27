@@ -243,7 +243,27 @@ function toggleFullScreen() {
 	document.getElementById("code_patient").value= codePati; 
 	}
 
+// combobox jquery a revoir 
+ function dt_inscription(){
+        var x= document.getElementById("inscrit").value;
+        if (x== "Oui"){
+            document.getElementById("dt_ins").style.display="";
+      //      document.getElementById("date_inscription").required= true;
+        }else{
+            document.getElementById("dt_ins").style.display="none";       
+            //    document.getElementById("date_inscription").required= false;
 
-
-
-
+        }
+    } 
+//jquery a revoir 
+ function show_req(){
+        //document.getElementById("precise").removeAttribute("required");
+        var x= document.getElementById("autre_affection").checked;
+        if (x== true){
+            document.getElementById("preci").className= "";   
+       //     document.getElementById("preciser").required= true;
+            
+            }else{ 
+                document.getElementById("preci").className= "hidden";   
+          //      document.getElementById("preciser").required= false;
+     }}
