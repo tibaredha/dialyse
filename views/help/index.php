@@ -9,7 +9,9 @@
   <li><?php echo '<a href="'.URL.'fpdf/doc/guide_utilisateur.pdf">guide_utilisateur.pdf</a>';echo '&nbsp;';?></li>
   <li><?php echo '<a href="'.URL.'fpdf/doc/Decret exécutif N°07-140 du 19-05-2007 portant création des EPH et des EPSP.pdf">Decret exécutif N°07-140 du 19-05-2007 portant création des EPH et des EPSP.pdf</a>';echo '&nbsp;';?></li>
   <li><?php echo '<a href="'.URL.'fpdf/doc/cim10.pdf">cim10.pdf</a>';echo '&nbsp;';?></li>
-</ul>
+  <li><?php echo '<a href="'.URL.'fpdf/doc/hemod.pdf">convention-type</a>';echo '&nbsp;';?></li>
+
+  </ul>
 </div>	
 <div class="content"><img id="image" src="<?php echo URL;?>public/images/help.jpg"></div>
 <div class="contentr"><img id="image" src="<?php echo URL;?>public/images/<?php echo logod;?>"></div>
